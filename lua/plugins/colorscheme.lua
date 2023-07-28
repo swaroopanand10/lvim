@@ -1,9 +1,4 @@
 return {
-  -- add gruvbox
-  -- {
-  --   "ellisonleao/gruvbox.nvim",
-  --   lazy = true,
-  -- },
 
   {
     "folke/tokyonight.nvim",

@@ -5,12 +5,15 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   keys = {
     { "<leader>kF", "<cmd>FzfLua<cr>", silent = true, desc = "fzflua" },
-    { "<leader>ka", "<cmd>FzfLua files cwd=~<cr>", desc = "fzflua files in ~" },
+    -- { "<leader>ka", "<cmd>FzfLua files cwd=/home/swaroop/<cr>", desc = "fzflua files in ~" },
+    { "<leader>kc", "<cmd>FzfLua files cwd=/home/swaroop/.config/<cr>", desc = "fzflua config files" },
+    { "<leader>kh", "<cmd>FzfLua files cwd=/home/swaroop/.local/<cr>", desc = "fzflua config files" },
     { "<leader>kR", "<cmd>FzfLua lgrep_curbuf<cr>", desc = "fzflua curbuf livegrep regex" },
     { "<leader>kr", "<cmd>FzfLua grep_curbuf<cr>", desc = "fzflua curbuf grep fuzzy" },
-    { "<leader>kv", "<cmd>FzfLua grep_visual<cr>", desc = "fzflua visualgrep workspace fuzzy" },
-    { "<leader>kf", "<cmd>FzfLua live_grep<cr>", desc = "fzflua livegrep workspace regex" },
-    { "<leader>kp", "<cmd>FzfLua files<cr>", desc = "fzflua find files" },
+    { "<leader>kw", "<cmd>FzfLua grep_visual<cr>", desc = "fzflua visualgrep workspace fuzzy" },
+    { "<leader>kW", "<cmd>FzfLua live_grep<cr>", desc = "fzflua livegrep workspace regex" },
+    { "<leader>kf", "<cmd>FzfLua files<cr>", desc = "fzflua find files" },
+    -- { "<leader>kp", "<cmd>FzfLua files cwd=/home/swaroop/Projects/<cr>", desc = "fzflua find files" },
     { "<leader>kb", "<cmd>FzfLua buffers<cr>", desc = "fzflua find buffers" },
     { "<leader>kl", "<cmd>FzfLua blines<cr>", desc = "fzflua find bufferlines fuzzy" },
     { "<leader>kL", "<cmd>FzfLua lines<cr>", desc = "fzflua find workspace lines fuzzy" },
@@ -28,7 +31,7 @@ return {
         })
       end,
       silent = true,
-      desc = "Fuzzy complete file",
+      desc = "fuzzy search directories in ~",
     },
 
     {
@@ -42,7 +45,49 @@ return {
         })
       end,
       silent = true,
-      desc = "Fuzzy complete file",
+      desc = "fuzzy search directories in .",
+    },
+
+    {
+      "<leader>kp",
+      function()
+        require("fzf-lua").files({
+          prompt = "LS> ",
+          cmd = "find /home/swaroop/Projects -type d",
+          cwd = "~/Projects/",
+          winopts = { preview = { hidden = "true" } },
+        })
+      end,
+      silent = true,
+      desc = "fuzzy search projects",
+    },
+
+    {
+      "<leader>ka",
+      function()
+        require("fzf-lua").files({
+          prompt = "LS> ",
+          cmd = "find /home/swaroop/ -not -path '*/.*'",
+          cwd = "~/",
+          winopts = { preview = { hidden = "true" } },
+        })
+      end,
+      silent = true,
+      desc = "fuzzy search files normal in ~",
+    },
+
+    {
+      "<leader>kA",
+      function()
+        require("fzf-lua").files({
+          prompt = "LS> ",
+          cmd = "find /home/swaroop/",
+          cwd = "~/",
+          winopts = { preview = { hidden = "true" } },
+        })
+      end,
+      silent = true,
+      desc = "fuzzy search files all files in ~",
     },
   },
 }
