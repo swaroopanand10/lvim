@@ -7,7 +7,7 @@ return {
     { "<leader>kF", "<cmd>FzfLua<cr>", silent = true, desc = "fzflua" },
     -- { "<leader>ka", "<cmd>FzfLua files cwd=/home/swaroop/<cr>", desc = "fzflua files in ~" },
     { "<leader>kc", "<cmd>FzfLua files cwd=/home/swaroop/.config/<cr>", desc = "fzflua config files" },
-    { "<leader>kh", "<cmd>FzfLua files cwd=/home/swaroop/.local/<cr>", desc = "fzflua config files" },
+    { "<leader>kh", "<cmd>FzfLua files cwd=/home/swaroop/.local/<cr>", desc = "fzflua local files" },
     { "<leader>kR", "<cmd>FzfLua lgrep_curbuf<cr>", desc = "fzflua curbuf livegrep regex" },
     { "<leader>kr", "<cmd>FzfLua grep_curbuf<cr>", desc = "fzflua curbuf grep fuzzy" },
     { "<leader>kw", "<cmd>FzfLua grep_visual<cr>", desc = "fzflua visualgrep workspace fuzzy" },
@@ -67,13 +67,14 @@ return {
       function()
         require("fzf-lua").files({
           prompt = "LS> ",
-          cmd = "find /home/swaroop/ -not -path '*/.*'",
+          -- cmd = "find /home/swaroop/ -not -path '*/.*'",
+          cmd = 'find ~ -not -path "*/.*" -not -name "*.exe" -not -name "*.out" -not -name "*.pdf" -not -name "*.jpg" -not -name "*.png" -not -name "*.jpeg" -not -name "*.tar" -not -name "*.mp3" -not -name "*.opus" -not -name "*.docx" -type f',
           cwd = "~/",
           winopts = { preview = { hidden = "true" } },
         })
       end,
       silent = true,
-      desc = "fuzzy search files normal in ~",
+      desc = "fuzzy search normal files in ~",
     },
 
     {
@@ -87,7 +88,7 @@ return {
         })
       end,
       silent = true,
-      desc = "fuzzy search files all files in ~",
+      desc = "fuzzy search all files in ~",
     },
   },
 }

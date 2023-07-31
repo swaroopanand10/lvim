@@ -7,6 +7,36 @@ return {
       local col = vim.fn.col(".") - 1
       return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
     end
+
+    local kind_icons = {
+      Text = "󰉿",
+      Method = "m",
+      Function = "󰊕",
+      Constructor = "",
+      Field = "",
+      Variable = "󰆧",
+      Class = "󰌗",
+      Interface = "",
+      Module = "",
+      Property = "",
+      Unit = "",
+      Value = "󰎠",
+      Enum = "",
+      Keyword = "󰌋",
+      Snippet = "",
+      Color = "󰏘",
+      File = "󰈙",
+      Reference = "",
+      Folder = "󰉋",
+      EnumMember = "",
+      Constant = "󰇽",
+      Struct = "",
+      Event = "",
+      Operator = "󰆕",
+      TypeParameter = "󰊄",
+      Codeium = "󰚩",
+      Copilot = "",
+    }
     return {
       snippet = {
         expand = function(args)
@@ -55,13 +85,28 @@ return {
           "s",
         }),
       }),
+      -- formatting = {
+      --   format = function(_, item)
+      --     local icons = require("lazyvim.config").icons.kinds
+      --     if icons[item.kind] then
+      --       item.kind = icons[item.kind] .. item.kind
+      --     end
+      --     return item
+      --   end,
+      -- },
       formatting = {
-        format = function(_, item)
-          local icons = require("lazyvim.config").icons.kinds
-          if icons[item.kind] then
-            item.kind = icons[item.kind] .. item.kind
-          end
-          return item
+        fields = { "kind", "abbr", "menu" },
+        format = function(entry, vim_item)
+          vim_item.kind = kind_icons[vim_item.kind]
+          vim_item.menu = ({
+            nvim_lsp = "",
+            nvim_lua = "",
+            luasnip = "",
+            buffer = "",
+            path = "",
+            emoji = "",
+          })[entry.source.name]
+          return vim_item
         end,
       },
       sources = {

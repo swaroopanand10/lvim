@@ -1,9 +1,10 @@
-local ls = require("luasnip")
-local s = ls.snippet
+-- local ls = require("luasnip")
+-- local s = ls.snippet
+-- local t = ls.text_node
+-- local i = ls.insert_node
+
 -- local sn = ls.snippet_node
 -- local isn = ls.indent_snippet_node
-local t = ls.text_node
-local i = ls.insert_node
 -- local f = ls.function_node
 -- local c = ls.choice_node
 -- local d = ls.dynamic_node
@@ -24,18 +25,20 @@ return {
   end,
 
 -- adding snippets for cpp
+opts= function()
+
+local ls = require("luasnip")
+local s = ls.snippet
+local t = ls.text_node
+local i = ls.insert_node
+
 ls.add_snippets("cpp", {
 	s(":cpp", {
 		t({ "#include <bits/stdc++.h>", "using namespace std;","#define ll long long"," ", "void solve(){", "  " }),
 		i(1),
 		t({ " ", "}", " ", "int main(){", '  // cout<<"hello";',"  ios::sync_with_stdio(false);","  cin.tie(nullptr);","  int t=1;","  cin>>t;","  while(t--){","    solve();", '    cout<<"\\n";', "  }", "}" }),
 	}),
-}),
-ls.add_snippets("c", {
-	s(":c", {
-		t({ "#include <stdio.h>", " ", "int main(int argc, char *argv[]) {", "  " }),
-		i(1),
-		t({ " ","  return 0;", "}", " " }),
-	}),
 })
+
+end,
 }

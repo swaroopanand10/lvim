@@ -20,6 +20,8 @@ return {
       dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
       -- dashboard.button("s", " " .. " Restore Session", [[:lua require("persistence").load() <cr>]]),
       dashboard.button("s", " " .. " Restore Session", [[:lua require("persisted").load() <cr>]]),
+      -- dashboard.button("S", " " .. " Telescope Session", ":Telescope persisted <cr>"),
+      dashboard.button("S", " " .. " Telescope Session", ":lua require('telescope').load_extension('persisted')<cr> <bar> :Telescope persisted<cr>"),
       dashboard.button("l", "󰒲 " .. " Lazy", ":Lazy<CR>"),
       dashboard.button("q", " " .. " Quit", ":qa<CR>"),
     }
