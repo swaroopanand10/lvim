@@ -2,7 +2,8 @@ return {
   "goolord/alpha-nvim",
 opts = function(_, dashboard)
   -- local button1 = dashboard.button("p", " " .. " Projects", ":Telescope projects <CR>")
-  local button  =    dashboard.button("s", " " .. " Restore Session", [[:lua require("persisted").load() <cr>]])
+  -- local button  =    dashboard.button("s", " " .. " Restore Session", [[:lua require("persisted").load() <cr>]])
+  local button  =    dashboard.button("a", " " .. " Restore Session", [[:lua require("persisted").load() <cr>]])
   local button2 =    dashboard.button("S", " " .. " Telescope Session", ":lua require('telescope').load_extension('persisted')<cr> <bar> :Telescope persisted<cr>")
 
     local logo = [[]]

@@ -13,9 +13,10 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +15 struct.c
-badd +0 in.txt
-badd +0 out.txt
+badd +13 c4.c
+badd +23 struct.c
+badd +1 in.txt
+badd +1 out.txt
 argglobal
 %argdel
 edit struct.c
@@ -39,17 +40,18 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 95 + 96) / 192)
-exe '2resize ' . ((&lines * 23 + 24) / 48)
-exe 'vert 2resize ' . ((&columns * 96 + 96) / 192)
-exe '3resize ' . ((&lines * 23 + 24) / 48)
-exe 'vert 3resize ' . ((&columns * 96 + 96) / 192)
+exe 'vert 1resize ' . ((&columns * 93 + 94) / 189)
+exe '2resize ' . ((&lines * 21 + 22) / 45)
+exe 'vert 2resize ' . ((&columns * 95 + 94) / 189)
+exe '3resize ' . ((&lines * 22 + 22) / 45)
+exe 'vert 3resize ' . ((&columns * 95 + 94) / 189)
 argglobal
-let s:l = 15 - ((14 * winheight(0) + 23) / 46)
+balt c4.c
+let s:l = 23 - ((22 * winheight(0) + 21) / 43)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 15
+keepjumps 23
 normal! 09|
 wincmd w
 argglobal
@@ -58,7 +60,7 @@ if &buftype ==# 'terminal'
   silent file in.txt
 endif
 balt struct.c
-let s:l = 1 - ((0 * winheight(0) + 11) / 22)
+let s:l = 1 - ((0 * winheight(0) + 10) / 20)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -71,18 +73,18 @@ if &buftype ==# 'terminal'
   silent file out.txt
 endif
 balt struct.c
-let s:l = 2 - ((1 * winheight(0) + 11) / 22)
+let s:l = 1 - ((0 * winheight(0) + 10) / 21)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 2
+keepjumps 1
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 95 + 96) / 192)
-exe '2resize ' . ((&lines * 23 + 24) / 48)
-exe 'vert 2resize ' . ((&columns * 96 + 96) / 192)
-exe '3resize ' . ((&lines * 23 + 24) / 48)
-exe 'vert 3resize ' . ((&columns * 96 + 96) / 192)
+exe 'vert 1resize ' . ((&columns * 93 + 94) / 189)
+exe '2resize ' . ((&lines * 21 + 22) / 45)
+exe 'vert 2resize ' . ((&columns * 95 + 94) / 189)
+exe '3resize ' . ((&lines * 22 + 22) / 45)
+exe 'vert 3resize ' . ((&columns * 95 + 94) / 189)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
