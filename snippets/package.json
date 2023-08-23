@@ -7,6 +7,10 @@
     "snippets": [
       {
         "language": "cpp",
+        "path": "./cf.json"
+      },
+      {
+        "language": "cpp",
         "path": "./cpp.json"
       }
     ]

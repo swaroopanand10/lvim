@@ -4,7 +4,7 @@ return {
     opts = {
       servers = {
         -- tsserver = {},
-        -- clangd = {},
+        clangd = {},
         html = {},
         cssls = {},
         emmet_ls = {},
@@ -26,5 +26,17 @@ return {
         "bash-language-server",
       },
     },
+  },
+  {
+    "kosayoda/nvim-lightbulb",
+    event = "BufEnter",
+    -- opts = {
+    --   autocmd = { enabled = true }
+    -- },
+    config = function()
+      require("nvim-lightbulb").setup({
+        autocmd = { enabled = true },
+      })
+    end,
   },
 }
