@@ -23,6 +23,8 @@ map("n", "<A-j>", "<C-w>j", opts)
 map("n", "<A-k>", "<C-w>k", opts)
 map("n", "<A-l>", "<C-w>l", opts)
 map("n", "<leader>gd", "<cmd>lcd %:p:h<cr>",{desc= "change dir to cwd",silent=true});
+map("n", "<leader>uL", "<cmd>LspStop<cr>",{desc= "stop lsp",silent=true});
+map("n", "<leader>ua", "<cmd>AerialOpen<cr>",{desc= "aerial open",silent=true});
 
 -- keympas for custom cumpilation
 vim.cmd(

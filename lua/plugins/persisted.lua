@@ -5,14 +5,14 @@ return {
     {
       "<leader>qa",
       "<cmd>SessionSave<cr>",
-      silent = true,
+      -- silent = true,
       desc = "session save",
     },
 
     {
       "<leader>qA",
       "<cmd>SessionDelete<cr>",
-      silent = true,
+      -- silent = true,
       desc = "session delete",
     },
   },

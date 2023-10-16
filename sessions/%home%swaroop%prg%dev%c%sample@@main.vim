@@ -14,12 +14,15 @@ else
   set shortmess=aoO
 endif
 badd +13 c4.c
-badd +23 struct.c
-badd +1 in.txt
+badd +15 struct.c
+badd +2 in.txt
 badd +1 out.txt
+badd +15 ~/prg/dev/c/sample/c5.c
+badd +35 c.c
+badd +10 macros.c
 argglobal
 %argdel
-edit struct.c
+edit macros.c
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -40,19 +43,19 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 93 + 94) / 189)
-exe '2resize ' . ((&lines * 21 + 22) / 45)
-exe 'vert 2resize ' . ((&columns * 95 + 94) / 189)
-exe '3resize ' . ((&lines * 22 + 22) / 45)
-exe 'vert 3resize ' . ((&columns * 95 + 94) / 189)
+exe 'vert 1resize ' . ((&columns * 144 + 96) / 192)
+exe '2resize ' . ((&lines * 23 + 24) / 48)
+exe 'vert 2resize ' . ((&columns * 47 + 96) / 192)
+exe '3resize ' . ((&lines * 23 + 24) / 48)
+exe 'vert 3resize ' . ((&columns * 47 + 96) / 192)
 argglobal
-balt c4.c
-let s:l = 23 - ((22 * winheight(0) + 21) / 43)
+balt c.c
+let s:l = 7 - ((6 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 23
-normal! 09|
+keepjumps 7
+normal! 0
 wincmd w
 argglobal
 if bufexists(fnamemodify("in.txt", ":p")) | buffer in.txt | else | edit in.txt | endif
@@ -60,31 +63,31 @@ if &buftype ==# 'terminal'
   silent file in.txt
 endif
 balt struct.c
-let s:l = 1 - ((0 * winheight(0) + 10) / 20)
+let s:l = 2 - ((1 * winheight(0) + 11) / 22)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
-normal! 08|
+keepjumps 2
+normal! 0
 wincmd w
 argglobal
 if bufexists(fnamemodify("out.txt", ":p")) | buffer out.txt | else | edit out.txt | endif
 if &buftype ==# 'terminal'
   silent file out.txt
 endif
-balt struct.c
-let s:l = 1 - ((0 * winheight(0) + 10) / 21)
+balt in.txt
+let s:l = 1 - ((0 * winheight(0) + 11) / 22)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 1
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 93 + 94) / 189)
-exe '2resize ' . ((&lines * 21 + 22) / 45)
-exe 'vert 2resize ' . ((&columns * 95 + 94) / 189)
-exe '3resize ' . ((&lines * 22 + 22) / 45)
-exe 'vert 3resize ' . ((&columns * 95 + 94) / 189)
+exe 'vert 1resize ' . ((&columns * 144 + 96) / 192)
+exe '2resize ' . ((&lines * 23 + 24) / 48)
+exe 'vert 2resize ' . ((&columns * 47 + 96) / 192)
+exe '3resize ' . ((&lines * 23 + 24) / 48)
+exe 'vert 3resize ' . ((&columns * 47 + 96) / 192)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

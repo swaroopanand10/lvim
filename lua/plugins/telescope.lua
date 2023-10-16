@@ -17,6 +17,14 @@ return { --Tip - check the default bindings before setting them unneccesarily
     },
 
 
+{
+      "<leader>uA",
+      ":lua require('telescope').load_extension('aerial')<cr> <bar> :Telescope aerial<cr>",
+      silent = true,
+      desc = "telescope aerial",
+    },
+
+
   },
   opts = {
 

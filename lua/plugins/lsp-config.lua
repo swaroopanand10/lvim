@@ -4,7 +4,7 @@ return {
     opts = {
       servers = {
         -- tsserver = {},
-        clangd = {},
+        -- clangd = {},
         html = {},
         cssls = {},
         emmet_ls = {},
