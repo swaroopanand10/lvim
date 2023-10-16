@@ -17,12 +17,12 @@ return { --Tip - check the default bindings before setting them unneccesarily
     },
 
 
-{
-      "<leader>uA",
-      ":lua require('telescope').load_extension('aerial')<cr> <bar> :Telescope aerial<cr>",
-      silent = true,
-      desc = "telescope aerial",
-    },
+-- {
+--       "<leader>uA",
+--       ":lua require('telescope').load_extension('aerial')<cr> <bar> :Telescope aerial<cr>",
+--       silent = true,
+--       desc = "telescope aerial",
+--     },
 
 
   },
@@ -42,6 +42,18 @@ return { --Tip - check the default bindings before setting them unneccesarily
           end, --doesn't seem to work with both ctrl and alt for some reason but are working for fzf
           ["<C-k>"] = function(...)
             return require("telescope.actions").move_selection_previous(...)
+          end,
+          ["<C-f>"] = function(...)
+            return require("telescope.actions").preview_scrolling_right(...)
+          end,
+          ["<C-b>"] = function(...)
+            return require("telescope.actions").preview_scrolling_left(...)
+          end,
+          ["<C-g>"] = function(...)
+            return require("telescope.actions").results_scrolling_right(...)
+          end,
+          ["<C-a>"] = function(...)
+            return require("telescope.actions").results_scrolling_left(...)
           end,
           -- ["<C-c>"] = function(...)
           --   return require("telescope.actions").close(...)
@@ -103,7 +115,20 @@ return { --Tip - check the default bindings before setting them unneccesarily
             return require("telescope.actions").delete_buffer(...)
           end,
         },
-        n = { -- seems like all of these are already default bindings so no need to set them seperately
+        n = {
+          ["<C-f>"] = function(...) 
+            return require("telescope.actions").preview_scrolling_right(...)
+          end,
+          ["<C-b>"] = function(...) --seems like this is used somewhere else but dont know where
+            return require("telescope.actions").preview_scrolling_left(...)
+          end,
+          ["<C-g>"] = function(...)
+            return require("telescope.actions").results_scrolling_right(...)
+          end,
+          ["<C-a>"] = function(...)
+            return require("telescope.actions").results_scrolling_left(...)
+          end,
+        -- seems like all of these are already default bindings so no need to set them seperately
         --   ["<esc>"] = actions.close,
         --   -- ["<C-c>"] = actions.close,
         --   ["<CR>"] = actions.select_default,
