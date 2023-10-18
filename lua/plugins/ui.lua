@@ -1,51 +1,4 @@
 return {
-  -- {
-  --   "SmiteshP/nvim-navic",
-  --   lazy = true,
-  --   opts = function()
-  --     return {
-  --       icons = {
-  --         File = " ",
-  --         Module = " ",
-  --         Namespace = " ",
-  --         Package = " ",
-  --         Class = " ",
-  --         Method = " ",
-  --         Property = " ",
-  --         Field = " ",
-  --         Constructor = " ",
-  --         Enum = "練",
-  --         Interface = "練",
-  --         Function = " ",
-  --         Variable = " ",
-  --         Constant = " ",
-  --         String = " ",
-  --         Number = " ",
-  --         Boolean = "◩ ",
-  --         Array = " ",
-  --         Object = " ",
-  --         Key = " ",
-  --         Null = "ﳠ ",
-  --         EnumMember = " ",
-  --         Struct = " ",
-  --         Event = " ",
-  --         Operator = " ",
-  --         TypeParameter = " ",
-  --       },
-  --       separator = " > ",
-  --       highlight = true,
-  --       depth_limit = 5,
-  --       -- icons = require("lazyvim.config").icons.kinds,
-  --     }
-  --   end,
-  -- },
-  {
-    "ahmedkhalf/project.nvim",
-    opts = {
-      -- cwd = pwd, rootdir = the latest directory containing file, we can chech both through neotree keybinding in whichkey
-      detection_methods = { "pattern", "lsp" },
-    },
-  },
   {
     "folke/flash.nvim",
     opts = {
@@ -63,7 +16,7 @@ return {
     "folke/zen-mode.nvim",
     keys = {
       {
-        "<leader>uz",
+        "<leader>jz",
         "<cmd>:ZenMode<cr>",
         silent = true,
         desc = "zenmode toggle",
@@ -87,6 +40,36 @@ return {
           font = "+4", -- font size increment
         },
       },
+    },
+  },
+
+  {
+    "folke/which-key.nvim",
+    optional = true,
+    opts = {
+      defaults = {
+        ["<leader>k"] = { name = "+fzflua" },
+        ["<leader>j"] = { name = "+extra" },
+      },
+    },
+  },
+
+  {
+    "nvimdev/dashboard-nvim",
+    opts = {
+      header = vim.split("", "\n"),
+      center = {
+        { action = 'lua require("persisted").load()', desc = " Restore persisted Session", icon = " ", key = "a" },
+      },
+    },
+  },
+
+  {
+    "folke/tokyonight.nvim",
+    lazy = true,
+    opts = {
+      -- style = "night",
+      -- transparent = true, -- Enable this to disable setting the background color
     },
   },
 }

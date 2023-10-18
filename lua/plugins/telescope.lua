@@ -12,13 +12,13 @@ return { --Tip - check the default bindings before setting them unneccesarily
   keys = {
     -- some telescope bindings
     {
-      "<leader>fa",
+      "<leader>ja",
       "<cmd>lua require('telescope.builtin').find_files({hidden=true})<cr>",
       silent = true,
       desc = "find all(+hid) files",
     },
     {
-      "<leader>qt",
+      "<leader>jt",
       ":lua require('telescope').load_extension('persisted')<cr> <bar> :Telescope persisted<cr>",
       silent = true,
       desc = "telescope persisted",
