@@ -1,3 +1,5 @@
+local logo = [[]]
+logo = string.rep("\n", 8) .. logo .. "\n\n"
 return {
   {
     "folke/flash.nvim",
@@ -57,9 +59,16 @@ return {
   {
     "nvimdev/dashboard-nvim",
     opts = {
-      header = vim.split("", "\n"),
-      center = {
-        { action = 'lua require("persisted").load()', desc = " Restore persisted Session", icon = " ", key = "a" },
+      hide = {
+        statusline =false,    -- hide statusline default is true
+        -- tabline =true,     -- hide the tabline
+        winbar  = true ,    -- hide winbar -- not working
+       },
+      config = {
+        header = vim.split(logo, "\n"),
+        -- center = { -- this results in overriding the defaults
+          -- { action = 'lua require("persisted").load()', desc = "Restore persisted Session", icon = " ", key = "a" },
+        -- },
       },
     },
   },

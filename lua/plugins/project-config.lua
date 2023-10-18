@@ -5,13 +5,19 @@ return {
     keys = {
       {
         "<leader>js",
+        "<cmd>lua require('persisted').load()<cr>",
+        -- silent = true,
+        desc = "Restore persisted Session",
+      },
+      {
+        "<leader>jS",
         "<cmd>SessionSave<cr>",
         -- silent = true,
         desc = "session save",
       },
 
       {
-        "<leader>jS",
+        "<leader>jD",
         "<cmd>SessionDelete<cr>",
         -- silent = true,
         desc = "session delete",
