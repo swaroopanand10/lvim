@@ -1,30 +1,42 @@
 return { --Tip - check the default bindings before setting them unneccesarily
   "nvim-telescope/telescope.nvim",
   lazy = true,
+  dependencies = {
+    {
+      "nvim-telescope/telescope-live-grep-args.nvim",
+      -- This will not install any breaking changes.
+      -- For major updates, this must be adjusted manually.
+      version = "^1.0.0",
+    },
+  },
   keys = {
     -- some telescope bindings
     {
       "<leader>fa",
       "<cmd>lua require('telescope.builtin').find_files({hidden=true})<cr>",
       silent = true,
-      desc = "find all files",
+      desc = "find all(+hid) files",
     },
-{
+    {
       "<leader>qt",
       ":lua require('telescope').load_extension('persisted')<cr> <bar> :Telescope persisted<cr>",
       silent = true,
       desc = "telescope persisted",
     },
 
+    { -- helps in live-grepping through rg with arguments
+      "<leader>kt",
+      ":lua require('telescope').load_extension('live_grep_args')<cr> <bar> :Telescope live_grep_args<cr>",
+      silent = true,
+      desc = "telescope persisted",
+    },
 
--- {
---       "<leader>uA",
---       ":lua require('telescope').load_extension('aerial')<cr> <bar> :Telescope aerial<cr>",
---       silent = true,
---       desc = "telescope aerial",
---     },
-
-
+    -- {
+    --       "<leader>uA",
+    --       ":lua require('telescope').load_extension('aerial')<cr> <bar> :Telescope aerial<cr>",
+    --       silent = true,
+    --       desc = "telescope aerial",
+    --     },
   },
   opts = {
 
@@ -116,50 +128,50 @@ return { --Tip - check the default bindings before setting them unneccesarily
           end,
         },
         n = {
-          ["<C-f>"] = function(...) 
+          ["<C-f>"] = function(...)
             return require("telescope.actions").preview_scrolling_right(...)
           end,
           ["<C-b>"] = function(...) --seems like this is used somewhere else but dont know where
             return require("telescope.actions").preview_scrolling_left(...)
           end,
-          ["<C-g>"] = function(...)
+          ["<C-g>"] = function(...) --seems like this is used somewhere else but dont know where
             return require("telescope.actions").results_scrolling_right(...)
           end,
           ["<C-a>"] = function(...)
             return require("telescope.actions").results_scrolling_left(...)
           end,
-        -- seems like all of these are already default bindings so no need to set them seperately
-        --   ["<esc>"] = actions.close,
-        --   -- ["<C-c>"] = actions.close,
-        --   ["<CR>"] = actions.select_default,
-        --   ["<C-x>"] = actions.select_horizontal,
-        --   ["<C-v>"] = actions.select_vertical,
-        --   ["<C-t>"] = actions.select_tab,
-        --   ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-        --   ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
-        --   ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
-        --   ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-        --   ["j"] = actions.move_selection_next,
-        --   ["k"] = actions.move_selection_previous,
-        --   ["H"] = actions.move_to_top,
-        --   ["M"] = actions.move_to_middle,
-        --   ["L"] = actions.move_to_bottom,
-        --   ["<Down>"] = actions.move_selection_next,
-        --   ["<Up>"] = actions.move_selection_previous,
-        --   ["gg"] = actions.move_to_top,
-        --   ["G"] = actions.move_to_bottom,
-        --   ["<C-u>"] = actions.preview_scrolling_up,
-        --   ["<C-d>"] = actions.preview_scrolling_down,
-        --   ["<PageUp>"] = actions.results_scrolling_up,
-        --   ["<PageDown>"] = actions.results_scrolling_down,
-        --   ["?"] = actions.which_key,
-        --   ["."] = actions.add_selection, -- not working
-        --   -- ["<a-h>"] = "which_key",
-        --   -- ["d"] = delete_buf
-        ["<a-d>"] = function(...)
-          require("telescope.actions").delete_buffer(...)
-        end,
-        --   --[[ ['<a-d>'] = require("telescope").mybuffer(), ]]
+          -- seems like all of these are already default bindings so no need to set them seperately
+          --   ["<esc>"] = actions.close,
+          --   -- ["<C-c>"] = actions.close,
+          --   ["<CR>"] = actions.select_default,
+          --   ["<C-x>"] = actions.select_horizontal,
+          --   ["<C-v>"] = actions.select_vertical,
+          --   ["<C-t>"] = actions.select_tab,
+          --   ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
+          --   ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+          --   ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+          --   ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+          --   ["j"] = actions.move_selection_next,
+          --   ["k"] = actions.move_selection_previous,
+          --   ["H"] = actions.move_to_top,
+          --   ["M"] = actions.move_to_middle,
+          --   ["L"] = actions.move_to_bottom,
+          --   ["<Down>"] = actions.move_selection_next,
+          --   ["<Up>"] = actions.move_selection_previous,
+          --   ["gg"] = actions.move_to_top,
+          --   ["G"] = actions.move_to_bottom,
+          --   ["<C-u>"] = actions.preview_scrolling_up,
+          --   ["<C-d>"] = actions.preview_scrolling_down,
+          --   ["<PageUp>"] = actions.results_scrolling_up,
+          --   ["<PageDown>"] = actions.results_scrolling_down,
+          --   ["?"] = actions.which_key,
+          --   ["."] = actions.add_selection, -- not working
+          --   -- ["<a-h>"] = "which_key",
+          --   -- ["d"] = delete_buf
+          ["<a-d>"] = function(...)
+            require("telescope.actions").delete_buffer(...)
+          end,
+          --   --[[ ['<a-d>'] = require("telescope").mybuffer(), ]]
         },
       },
     },

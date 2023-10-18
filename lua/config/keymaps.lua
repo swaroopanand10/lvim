@@ -24,7 +24,14 @@ map("n", "<A-k>", "<C-w>k", opts)
 map("n", "<A-l>", "<C-w>l", opts)
 map("n", "<leader>gd", "<cmd>lcd %:p:h<cr>",{desc= "change dir to cwd",silent=true});
 map("n", "<leader>uL", "<cmd>LspStop<cr>",{desc= "stop lsp",silent=true});
--- map("n", "<leader>ua", "<cmd>AerialOpen<cr>",{desc= "aerial open",silent=true});
+
+vim.api.nvim_exec([[
+  augroup FzfCustomKeybindings
+    autocmd!
+    autocmd FileType fzf tnoremap <buffer> <C-j> <Down>
+    autocmd FileType fzf tnoremap <buffer> <C-k> <Up>
+  augroup END
+]], false)
 
 -- keympas for custom cumpilation
 vim.cmd(

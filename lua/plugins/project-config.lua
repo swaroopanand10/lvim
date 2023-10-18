@@ -33,4 +33,12 @@ return {
     --   reset_prompt_after_deletion = true, -- whether to reset prompt after session deleted
     -- },
   },
+  {
+    "ahmedkhalf/project.nvim",
+    opts = {
+      -- cwd = pwd, rootdir = the latest directory containing file, we can chech both through neotree keybinding in whichkey
+      detection_methods = { "pattern", "lsp" },
+    },
+  },
+
 }

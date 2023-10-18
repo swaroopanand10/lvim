@@ -106,7 +106,6 @@ return {
             path = "",
             emoji = "",
           })[entry.source.name]
-          vim_item.abbr = string.sub(vim_item.abbr, 1, 80) -- for setting max width of window
           return vim_item
         end,
       },
