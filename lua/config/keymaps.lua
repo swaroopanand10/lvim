@@ -22,16 +22,60 @@ map("n", "<A-h>", "<C-w>h", opts)
 map("n", "<A-j>", "<C-w>j", opts)
 map("n", "<A-k>", "<C-w>k", opts)
 map("n", "<A-l>", "<C-w>l", opts)
-map("n", "<leader>jL", "<cmd>LspStop<cr>",{desc= "stop lsp",silent=true});
-map("n", "<leader>jl", "<cmd>LazyRoot<cr>",{desc= "lazyroot command",silent=true});
+map("n", "<leader>jL", "<cmd>LspStop<cr>", { desc = "stop lsp", silent = true })
+map("n", "<leader>jl", "<cmd>LazyRoot<cr>", { desc = "lazyroot command", silent = true })
 
-vim.api.nvim_exec([[
+-- keymaps for manupulating window using nvim_window_picker
+map("n", "<leader>jww", function()
+  print("hello world")
+  local winid = require("window-picker").pick_window()
+  if winid then
+    vim.api.nvim_set_current_win(winid)
+  end
+end, { desc = "switch window" })
+
+map("n", "<leader>jwd", function()
+  print("hello world")
+  local winid = require("window-picker").pick_window()
+  if winid then
+    vim.api.nvim_win_close(winid, true)
+  end
+end, { desc = "delete window" })
+
+map("n", "<leader>jws", function()
+  print("hello world")
+  local windowid = require("window-picker").pick_window()
+  local function swap_with(stay, winid)
+    if not winid then
+      return
+    end
+
+    local cur_winid = vim.fn.win_getid()
+
+    local cur_bufnr = vim.api.nvim_win_get_buf(cur_winid)
+    local target_bufnr = vim.api.nvim_win_get_buf(winid)
+
+    vim.api.nvim_win_set_buf(cur_winid, target_bufnr)
+    vim.api.nvim_win_set_buf(winid, cur_bufnr)
+
+    if not stay then
+      vim.api.nvim_set_current_win(winid)
+    end
+  end
+  swap_with(true, windowid)
+end, { desc = "swap window" })
+
+-- fzflua changing keybindigs for navigation
+vim.api.nvim_exec(
+  [[
   augroup FzfCustomKeybindings
     autocmd!
     autocmd FileType fzf tnoremap <buffer> <C-j> <Down>
     autocmd FileType fzf tnoremap <buffer> <C-k> <Up>
   augroup END
-]], false)
+]],
+  false
+)
 
 -- keympas for custom cumpilation
 vim.cmd(

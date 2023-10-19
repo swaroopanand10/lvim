@@ -1,6 +1,7 @@
 local logo = [[]]
 logo = string.rep("\n", 8) .. logo .. "\n\n"
 return {
+
   {
     "folke/flash.nvim",
     opts = {
@@ -52,6 +53,7 @@ return {
       defaults = {
         ["<leader>k"] = { name = "+fzflua" },
         ["<leader>j"] = { name = "+extra" },
+        ["<leader>jw"] = { name = "+windowpick" },
       },
     },
   },
@@ -60,14 +62,14 @@ return {
     "nvimdev/dashboard-nvim",
     opts = {
       hide = {
-        statusline =false,    -- hide statusline default is true
+        statusline = false, -- hide statusline default is true
         -- tabline =true,     -- hide the tabline
-        winbar  = true ,    -- hide winbar -- not working
-       },
+        winbar = true, -- hide winbar -- not working
+      },
       config = {
         header = vim.split(logo, "\n"),
         -- center = { -- this results in overriding the defaults
-          -- { action = 'lua require("persisted").load()', desc = "Restore persisted Session", icon = " ", key = "a" },
+        -- { action = 'lua require("persisted").load()', desc = "Restore persisted Session", icon = " ", key = "a" },
         -- },
       },
     },
@@ -81,4 +83,66 @@ return {
       -- transparent = true, -- Enable this to disable setting the background color
     },
   },
+
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    dependencies = {
+      {
+        "s1n7ax/nvim-window-picker",
+        -- keys = {
+        --   {
+        --     "<leader>jww",
+        --     swich_window = function()
+        --       local winid = require("window-picker").pick_window()
+        --       if winid then
+        --         vim.api.nvim_set_current_win(winid)
+        --       end
+        --     end,
+        --     "<cmd>{switch_window}<cr",
+        --     silent = true,
+        --     desc = "window pick",
+        --   },
+        -- },
+      },
+    },
+    keys = {
+      {
+        "<leader>je",
+        "<cmd>:Neotree reveal<cr>",
+        silent = true,
+        desc = "neotree reveal",
+      },
+    },
+    opts = {
+      window = {
+        mappings = {
+          ["S"] = "split_with_window_picker",
+          ["s"] = "vsplit_with_window_picker",
+        },
+      },
+    },
+  },
+  -- {
+  --   "ten3roberts/window-picker.nvim",
+  --   keys = {
+  --     {
+  --       "<leader>jww",
+  --       "<cmd>:WindowPick<cr>",
+  --       silent = true,
+  --       desc = "window pick",
+  --     },
+  --     {
+  --       "<leader>jws",
+  --       "<cmd>:WindowSwap<cr>",
+  --       silent = true,
+  --       desc = "widnow swap",
+  --     },
+  --     {
+  --       "<leader>jwd",
+  --       "<cmd>:WindowZap<cr>",
+  --       silent = true,
+  --       desc = "window zap",
+  --     },
+  --   },
+  -- },
 }

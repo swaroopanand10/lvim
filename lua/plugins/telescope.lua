@@ -25,10 +25,10 @@ return { --Tip - check the default bindings before setting them unneccesarily
     },
 
     { -- helps in live-grepping through rg with arguments
-      "<leader>kt",
+      "<leader>jr",
       ":lua require('telescope').load_extension('live_grep_args')<cr> <bar> :Telescope live_grep_args<cr>",
       silent = true,
-      desc = "telescope persisted",
+      desc = "telescope livegrep with args",
     },
 
     -- {
