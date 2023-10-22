@@ -27,12 +27,18 @@ map("n", "<leader>jl", "<cmd>LazyRoot<cr>", { desc = "lazyroot command", silent 
 
 -- keymaps for manupulating window using nvim_window_picker
 map("n", "<leader>jww", function()
-  print("hello world")
   local winid = require("window-picker").pick_window()
   if winid then
     vim.api.nvim_set_current_win(winid)
   end
-end, { desc = "switch window" })
+end, { desc = "switch window", silent = true })
+
+map("n", "<A-;>", function()
+  local winid = require("window-picker").pick_window()
+  if winid then
+    vim.api.nvim_set_current_win(winid)
+  end
+end, {silent = true});
 
 map("n", "<leader>jwd", function()
   print("hello world")
@@ -40,7 +46,7 @@ map("n", "<leader>jwd", function()
   if winid then
     vim.api.nvim_win_close(winid, true)
   end
-end, { desc = "delete window" })
+end, { desc = "delete window", silent = true })
 
 map("n", "<leader>jws", function()
   print("hello world")
@@ -63,7 +69,7 @@ map("n", "<leader>jws", function()
     end
   end
   swap_with(true, windowid)
-end, { desc = "swap window" })
+end, { desc = "swap window", silent = true })
 
 -- fzflua changing keybindigs for navigation
 vim.api.nvim_exec(

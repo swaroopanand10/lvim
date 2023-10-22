@@ -94,7 +94,7 @@ return {
     },
   },
   opts = {
-    "borderless",
+    "telescope",
     keymap = {
       builtin = {
         ["<F1>"] = "toggle-help",

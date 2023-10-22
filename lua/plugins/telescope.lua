@@ -31,12 +31,12 @@ return { --Tip - check the default bindings before setting them unneccesarily
       desc = "telescope livegrep with args",
     },
 
-    -- {
-    --       "<leader>uA",
-    --       ":lua require('telescope').load_extension('aerial')<cr> <bar> :Telescope aerial<cr>",
-    --       silent = true,
-    --       desc = "telescope aerial",
-    --     },
+    {
+      "<leader>jh",
+      ":lua require('telescope').load_extension('harpoon')<cr> <bar> :Telescope harpoon marks<cr>",
+      silent = true,
+      desc = "telescope harpoon",
+    },
   },
   opts = {
 

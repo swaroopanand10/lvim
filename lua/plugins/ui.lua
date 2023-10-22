@@ -39,7 +39,7 @@ return {
         },
         tmux = { enabled = true }, --seems that true value disables the tmux statusline
         kitty = {
-          enabled = true,
+          enabled = false, --disabling it since it is forcing the text size to fall back to default small, anyway didn't need it
           font = "+4", -- font size increment
         },
       },
@@ -54,6 +54,7 @@ return {
         ["<leader>k"] = { name = "+fzflua" },
         ["<leader>j"] = { name = "+extra" },
         ["<leader>jw"] = { name = "+windowpick" },
+        ["<leader>h"] = { name = "+harpoon" },
       },
     },
   },
@@ -80,7 +81,34 @@ return {
     lazy = true,
     opts = {
       -- style = "night",
-      -- transparent = true, -- Enable this to disable setting the background color
+      transparent = true, -- Enable this to disable setting the background color
+      styles = {
+        -- Normal = { guibg = "#ffffff" }, -- not working
+        sidebars = "transparent",
+        floats = "transparent",
+      },
+      lualine_bold = true,
+      on_colors = function(colors)
+        colors.hint = colors.orange
+        colors.error = "#ff0000"
+        colors.bg_dark = "#000000"
+        colors.bg = "#000000"
+        colors.bg_float = "#000000"
+        colors.bg_highlight = "#000101"
+        -- colors.bg_highlight = "#0C090A"
+        -- colors.bg_highlight = "#313955" --from treesitter-context
+        colors.bg_popup = "#000000"
+        colors.bg_sidebar = "#000000"
+        colors.bg_statusline = "#000000"
+      end,
+      on_highlights = function(hl, c)
+        local dark = "#000101"
+        local visualdark = "#2d3f76"
+        hl.TreesitterContext = {
+          -- bg = visualdark,
+          bg = dark,
+        }
+      end,
     },
   },
 
@@ -89,20 +117,6 @@ return {
     dependencies = {
       {
         "s1n7ax/nvim-window-picker",
-        -- keys = {
-        --   {
-        --     "<leader>jww",
-        --     swich_window = function()
-        --       local winid = require("window-picker").pick_window()
-        --       if winid then
-        --         vim.api.nvim_set_current_win(winid)
-        --       end
-        --     end,
-        --     "<cmd>{switch_window}<cr",
-        --     silent = true,
-        --     desc = "window pick",
-        --   },
-        -- },
       },
     },
     keys = {
@@ -120,6 +134,12 @@ return {
           ["s"] = "vsplit_with_window_picker",
         },
       },
+    },
+  },
+  {
+    "s1n7ax/nvim-window-picker",
+    opts = {
+      hint = "floating-big-letter",
     },
   },
   -- {
