@@ -15,7 +15,7 @@ return { --Tip - check the default bindings before setting them unneccesarily
       "<leader>ja",
       "<cmd>lua require('telescope.builtin').find_files({hidden=true})<cr>",
       silent = true,
-      desc = "find all(+hid) files",
+      desc = "find all(+hid) files in curdir",
     },
     {
       "<leader>jt",
