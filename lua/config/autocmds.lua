@@ -9,7 +9,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
-
 -- adding features in mini.files to open files in desirabe splits and selected window
 local map_split = function(buf_id, lhs, direction)
   local rhs = function()
@@ -56,5 +55,17 @@ vim.api.nvim_create_autocmd("User", {
     map_split(buf_id, "<S-s>", "belowright horizontal")
     map_split(buf_id, "<C-s>", "belowright vertical")
     map_select_window(buf_id, "<C-w>")
+  end,
+})
+
+-- feature to on winbar only when there is multiple splits (working)
+vim.api.nvim_create_autocmd({ "WinEnter", "WinLeave" }, {
+  callback = function()
+    local win_num = #vim.api.nvim_list_wins()
+    if win_num > 1 then
+      vim.o.winbar = " %t %m"
+    else
+      vim.o.winbar = false
+    end
   end,
 })
