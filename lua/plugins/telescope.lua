@@ -12,7 +12,7 @@ return { --Tip - check the default bindings before setting them unneccesarily
   keys = {
     -- some telescope bindings
     {
-      "<leader>ja",
+      "<leader>jf",
       "<cmd>lua require('telescope.builtin').find_files({hidden=true})<cr>",
       silent = true,
       desc = "find all(+hid) files in curdir",

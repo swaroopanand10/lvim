@@ -5,3 +5,10 @@
 
 -- vim.o.winbar = " %t %m" -- without navic
 vim.opt.swapfile = false
+
+-- cursor style
+vim.opt.guicursor = "n-v-c:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor,a:blinkon100"
+
+--disabling line numbers
+vim.o.number = false
+vim.o.relativenumber = false

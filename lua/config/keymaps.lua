@@ -38,10 +38,9 @@ map("n", "<A-;>", function()
   if winid then
     vim.api.nvim_set_current_win(winid)
   end
-end, {silent = true});
+end, { silent = true })
 
 map("n", "<leader>jwd", function()
-  print("hello world")
   local winid = require("window-picker").pick_window()
   if winid then
     vim.api.nvim_win_close(winid, true)
@@ -49,7 +48,6 @@ map("n", "<leader>jwd", function()
 end, { desc = "delete window", silent = true })
 
 map("n", "<leader>jws", function()
-  print("hello world")
   local windowid = require("window-picker").pick_window()
   local function swap_with(stay, winid)
     if not winid then
@@ -82,6 +80,70 @@ vim.api.nvim_exec(
 ]],
   false
 )
+
+-- Keymap for toggling winbar
+map("n", "<leader>jb", function()
+  -- local current_win = vim.fn.winnr()
+  local winbar_exists = false
+
+  -- Check if winbar exists
+  for _, winid in ipairs(vim.fn.getwininfo()) do
+    if winid.winbar == 1 then
+      winbar_exists = true
+      break
+    end
+  end
+  if winbar_exists then
+    vim.o.winbar = nil
+  else
+    vim.o.winbar = " %t %m"
+  end
+end, { desc = "toggle winbar", silent = true })
+
+-- Keymap for toggling statusbar
+map("n", "<leader>jB", function()
+  if vim.o.laststatus == 3 then
+    vim.o.laststatus = 0
+    require("lualine").hide({ un,ide = false })
+    vim.api.nvim_set_hl(0, "Statusline", { fg = "#1b1d2b", bg = "#000000" })
+    vim.api.nvim_set_hl(0, "StatuslineNC", { bold = true, fg = "#1b1d2b", bg = "#000000" })
+    vim.cmd([[set statusline=%{repeat('─',winwidth('.'))}]])
+  else
+    require("lualine").hide({ unhide = true })
+    vim.o.laststatus = 3
+    vim.api.nvim_set_hl(0, "Statusline", {})
+    vim.api.nvim_set_hl(0, "StatuslineNC", {fg = "#3b4261"})
+  end
+end, { desc = "toggle statusbar", silent = true })
+--
+-- Keymap for toggling both statusbar and winbar
+map("n", "<C-i>", function()
+  if vim.o.laststatus == 3 then
+    vim.o.laststatus = 0
+    require("lualine").hide({ unhide = false })
+    vim.o.winbar = nil
+    vim.api.nvim_set_hl(0, "Statusline", { fg = "#1b1d2b", bg = "#000000" })
+    vim.api.nvim_set_hl(0, "StatuslineNC", { bold = true, fg = "#1b1d2b", bg = "#000000" })
+    vim.cmd([[set statusline=%{repeat('─',winwidth('.'))}]])
+  else
+    vim.o.winbar = " %t %m"
+    require("lualine").hide({ unhide = true })
+    vim.o.laststatus = 3
+    vim.api.nvim_set_hl(0, "Statusline", {})
+    vim.api.nvim_set_hl(0, "StatuslineNC", {fg = "#3b4261"})
+  end
+end, { desc = "toggle statusbar", silent = true })
+
+--mapping for toggling line numbers for all open windows
+map("n", "<leader>ja", function()
+  if vim.opt_local.number:get() or vim.opt_local.relativenumber:get() then
+    -- vim.cmd([[windo if &filetype != 'noetree'| set nonumber | set norelativenumber | endif]])
+    vim.cmd([[let s:currentWindow = winnr() | windo if &filetype != 'noetree'| set nonumber | set norelativenumber | endif | execute s:currentWindow . "wincmd w"]]) -- this helps in keeping focus to current window
+  else
+    -- vim.cmd([[windo if &filetype != 'noetree'| set number | set relativenumber | endif]])
+    vim.cmd([[let s:currentWindow = winnr() | windo if &filetype != 'noetree'| set number | set relativenumber | endif | execute s:currentWindow . "wincmd w"]])
+  end
+end, { desc = "toggle lineno on all windows", silent = true })
 
 
 -- -- mappings for neorg

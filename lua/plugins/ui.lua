@@ -45,6 +45,17 @@ return {
       },
     },
   },
+  -- {
+  --   "pocco81/true-zen.nvim",
+  --   keys = {
+  --     {
+  --       "<leader>jZ",
+  --       "<cmd>:TZMinimalist<cr>",
+  --       silent = true,
+  --       desc = "true zen minimalist",
+  --     },
+  --   }
+  -- },
 
   {
     "folke/which-key.nvim",

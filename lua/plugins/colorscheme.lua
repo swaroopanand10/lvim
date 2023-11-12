@@ -26,10 +26,33 @@ return {
     on_highlights = function(hl, c)
       local dark = "#000101"
       local visualdark = "#2d3f76"
+      local red = "#ff0000"
+      local red1 = "#F92660"
+      local black = "#000000"
       hl.TreesitterContext = {
         -- bg = visualdark,
         bg = dark,
       }
+      hl.Cursor = { -- setting cursor colors(only work if vim.o.guicursor will be set in options)
+        bg = red1,
+        -- fg = red1,
+      }
+
+      -- editing status line colors, will only work if lualine is disabled
+      -- hl.StatusLine = {
+      --   bg = black,
+      --   fg = black,
+      -- }
+      -- hl.StatusLineNC = {
+      --   bg = black,
+      --   fg = black,
+      -- }
     end,
   },
+  -- {
+  --  "Shatur/neovim-ayu"
+  -- },
+  -- {
+  --   "nyoom-engineering/oxocarbon.nvim"
+  -- }
 }
