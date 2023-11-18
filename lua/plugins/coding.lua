@@ -1,36 +1,4 @@
 return {
-  -- {
-  -- i think that we can configure lspconfig like this without overidding the lazyvim default setted options but, 
-  -- I don't think we need to configure empty servers as they are pre-configured with defaults when they are installed(so just put them in mason)
-  --   "neovim/nvim-lspconfig",
-  --   opts = { 
-  --     servers = {
-  --       -- tsserver = {},
-  --       -- clangd = {},
-  --       html = {},
-  --       cssls = {},
-  --       emmet_ls = {},
-  --       bashls = {},
-  --     },
-  --   },
-  -- },
-
-  -- {
-  --   "williamboman/mason.nvim",
-  --   opts = {
-  --   -- wrong way of configuring ensure_installed as it will overrite the prewritten ensure_installed table by lazyvim like codelldb
-  --     ensure_installed = { -- have to write full name of lsp server
-  --       "stylua",
-  --       "shfmt",
-  --       "flake8",
-  --       "html-lsp",
-  --       "css-lsp",
-  --       "emmet-ls",
-  --       "bash-language-server",
-  --     },
-  --   },
-  -- },
-
   -- this is a correct way of configuring mason, so that the previous dafault items setup by lazyvim does not get overidden(same way also configure typescript (see lazyvim docs))
   {
 
@@ -72,4 +40,20 @@ return {
       })
     end,
   },
+  -- {
+  --   -- I think that we can configure lspconfig servers like this normally without overidding the lazyvim default setted options but,
+  --   -- I don't think we need to configure empty servers as they are pre-configured with defaults when they are installed(so just put them in mason)
+  --   "neovim/nvim-lspconfig",
+  --   opts = {
+  --     -- inlay_hints = { enabled = true },
+  --     -- servers = {
+  --     --   -- tsserver = {},
+  --     --   -- clangd = {},
+  --     --   html = {},
+  --     --   cssls = {},
+  --     --   emmet_ls = {},
+  --     --   bashls = {},
+  --     -- },
+  --   },
+  -- },
 }

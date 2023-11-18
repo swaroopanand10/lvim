@@ -101,7 +101,7 @@ map("n", "<leader>jb", function()
 end, { desc = "toggle winbar", silent = true })
 
 -- Keymap for toggling statusbar
-map("n", "<leader>jB", function()
+map("n", "<leader>jx", function()
   if vim.o.laststatus == 3 then
     vim.o.laststatus = 0
     require("lualine").hide({ un,ide = false })
