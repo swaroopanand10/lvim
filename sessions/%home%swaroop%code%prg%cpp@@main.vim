@@ -3,7 +3,7 @@ let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-
 let v:this_session=expand("<sfile>:p")
 silent only
 silent tabonly
-cd ~/prg/dev/c/sample
+cd ~/code/prg/cpp
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
@@ -13,16 +13,12 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +13 c4.c
-badd +15 struct.c
-badd +2 in.txt
-badd +1 out.txt
-badd +15 ~/prg/dev/c/sample/c5.c
-badd +35 c.c
-badd +10 macros.c
+badd +6 cpp.cpp
+badd +1 in.txt
+badd +0 out.txt
 argglobal
 %argdel
-edit macros.c
+edit cpp.cpp
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -43,18 +39,25 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 144 + 96) / 192)
-exe '2resize ' . ((&lines * 23 + 24) / 48)
-exe 'vert 2resize ' . ((&columns * 47 + 96) / 192)
-exe '3resize ' . ((&lines * 23 + 24) / 48)
-exe 'vert 3resize ' . ((&columns * 47 + 96) / 192)
+exe 'vert 1resize ' . ((&columns * 136 + 96) / 192)
+exe '2resize ' . ((&lines * 23 + 23) / 46)
+exe 'vert 2resize ' . ((&columns * 55 + 96) / 192)
+exe '3resize ' . ((&lines * 22 + 23) / 46)
+exe 'vert 3resize ' . ((&columns * 55 + 96) / 192)
 argglobal
-balt c.c
-let s:l = 7 - ((6 * winheight(0) + 23) / 46)
+setlocal fdm=indent
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 6 - ((5 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 7
+keepjumps 6
 normal! 0
 wincmd w
 argglobal
@@ -62,12 +65,20 @@ if bufexists(fnamemodify("in.txt", ":p")) | buffer in.txt | else | edit in.txt |
 if &buftype ==# 'terminal'
   silent file in.txt
 endif
-balt struct.c
-let s:l = 2 - ((1 * winheight(0) + 11) / 22)
+balt cpp.cpp
+setlocal fdm=indent
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 1 - ((0 * winheight(0) + 11) / 23)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 2
+keepjumps 1
 normal! 0
 wincmd w
 argglobal
@@ -76,6 +87,14 @@ if &buftype ==# 'terminal'
   silent file out.txt
 endif
 balt in.txt
+setlocal fdm=indent
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
 let s:l = 1 - ((0 * winheight(0) + 11) / 22)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
@@ -83,11 +102,11 @@ normal! zt
 keepjumps 1
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 144 + 96) / 192)
-exe '2resize ' . ((&lines * 23 + 24) / 48)
-exe 'vert 2resize ' . ((&columns * 47 + 96) / 192)
-exe '3resize ' . ((&lines * 23 + 24) / 48)
-exe 'vert 3resize ' . ((&columns * 47 + 96) / 192)
+exe 'vert 1resize ' . ((&columns * 136 + 96) / 192)
+exe '2resize ' . ((&lines * 23 + 23) / 46)
+exe 'vert 2resize ' . ((&columns * 55 + 96) / 192)
+exe '3resize ' . ((&lines * 22 + 23) / 46)
+exe 'vert 3resize ' . ((&columns * 55 + 96) / 192)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

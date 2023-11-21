@@ -7,6 +7,7 @@ return {
     { "<leader>kF", "<cmd>FzfLua<cr>", silent = true, desc = "fzflua" },
     -- { "<leader>ka", "<cmd>FzfLua files cwd=/home/swaroop/<cr>", desc = "fzflua files in ~" },
     { "<leader>kc", "<cmd>FzfLua files cwd=/home/swaroop/.config/<cr>", desc = "fzflua config files" },
+    { "<leader>k.", "<cmd>FzfLua files cwd=$HOME/dotstow/<cr>", desc = "fzflua dotstow files" },
     { "<leader>kh", "<cmd>FzfLua files cwd=/home/swaroop/.local/<cr>", desc = "fzflua local files" },
     { "<leader>kR", "<cmd>FzfLua lgrep_curbuf<cr>", desc = "fzflua curbuf livegrep regex" },
     { "<leader>kr", "<cmd>FzfLua grep_curbuf<cr>", desc = "fzflua curbuf grep fuzzy" },
