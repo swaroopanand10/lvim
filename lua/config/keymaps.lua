@@ -104,7 +104,7 @@ end, { desc = "toggle winbar", silent = true })
 map("n", "<leader>jx", function()
   if vim.o.laststatus == 3 then
     vim.o.laststatus = 0
-    require("lualine").hide({ un,ide = false })
+    require("lualine").hide({ unhide = false })
     vim.api.nvim_set_hl(0, "Statusline", { fg = "#1b1d2b", bg = "#000000" })
     vim.api.nvim_set_hl(0, "StatuslineNC", { bold = true, fg = "#1b1d2b", bg = "#000000" })
     vim.cmd([[set statusline=%{repeat('─',winwidth('.'))}]])
@@ -115,7 +115,7 @@ map("n", "<leader>jx", function()
     vim.api.nvim_set_hl(0, "StatuslineNC", {fg = "#3b4261"})
   end
 end, { desc = "toggle statusbar", silent = true })
---
+
 -- Keymap for toggling both statusbar and winbar
 map("n", "<C-i>", function()
   if vim.o.laststatus == 3 then

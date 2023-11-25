@@ -13,9 +13,10 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +6 cpp.cpp
+badd +1 cpp.cpp
 badd +1 in.txt
-badd +0 out.txt
+badd +1 out.txt
+badd +1 peda-session-exe.txt
 argglobal
 %argdel
 edit cpp.cpp
@@ -39,12 +40,13 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 136 + 96) / 192)
-exe '2resize ' . ((&lines * 23 + 23) / 46)
-exe 'vert 2resize ' . ((&columns * 55 + 96) / 192)
-exe '3resize ' . ((&lines * 22 + 23) / 46)
-exe 'vert 3resize ' . ((&columns * 55 + 96) / 192)
+exe 'vert 1resize ' . ((&columns * 61 + 43) / 87)
+exe '2resize ' . ((&lines * 11 + 11) / 22)
+exe 'vert 2resize ' . ((&columns * 25 + 43) / 87)
+exe '3resize ' . ((&lines * 10 + 11) / 22)
+exe 'vert 3resize ' . ((&columns * 25 + 43) / 87)
 argglobal
+balt in.txt
 setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -53,11 +55,15 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 6 - ((5 * winheight(0) + 23) / 46)
+4
+normal! zo
+7
+normal! zo
+let s:l = 1 - ((0 * winheight(0) + 11) / 22)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 6
+keepjumps 1
 normal! 0
 wincmd w
 argglobal
@@ -74,7 +80,7 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 1 - ((0 * winheight(0) + 11) / 23)
+let s:l = 1 - ((0 * winheight(0) + 5) / 11)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -95,18 +101,18 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 1 - ((0 * winheight(0) + 11) / 22)
+let s:l = 2 - ((1 * winheight(0) + 5) / 10)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
+keepjumps 2
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 136 + 96) / 192)
-exe '2resize ' . ((&lines * 23 + 23) / 46)
-exe 'vert 2resize ' . ((&columns * 55 + 96) / 192)
-exe '3resize ' . ((&lines * 22 + 23) / 46)
-exe 'vert 3resize ' . ((&columns * 55 + 96) / 192)
+exe 'vert 1resize ' . ((&columns * 61 + 43) / 87)
+exe '2resize ' . ((&lines * 11 + 11) / 22)
+exe 'vert 2resize ' . ((&columns * 25 + 43) / 87)
+exe '3resize ' . ((&lines * 10 + 11) / 22)
+exe 'vert 3resize ' . ((&columns * 25 + 43) / 87)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

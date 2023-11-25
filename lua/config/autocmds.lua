@@ -70,9 +70,19 @@ vim.api.nvim_create_autocmd("User", {
 --   end,
 -- })
 
--- feature to disable lualine on startup (not working)
--- vim.api.nvim_create_autocmd({"VimEnter"}, {
---   callback = function()
---     require("lualine").hide()
---   end,
--- })
+-- feature to disable lualine on first buf entry(immitating vim startup) only once (working)
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+  once = true,
+  callback = function()
+    if vim.o.laststatus == 3 then
+      vim.o.laststatus = 0
+      require("lualine").hide({ unhide = false })
+      vim.api.nvim_set_hl(0, "Statusline", { fg = "#1b1d2b", bg = "#000000" })
+      vim.api.nvim_set_hl(0, "StatuslineNC", { bold = true, fg = "#1b1d2b", bg = "#000000" })
+      vim.cmd([[set statusline=%{repeat('─',winwidth('.'))}]])
+    end
+  end,
+})
+
+
+vim.api.nvim_del_augroup_by_name('lazyvim_resize_splits') -- disabling the split resizing after terminal resizing
