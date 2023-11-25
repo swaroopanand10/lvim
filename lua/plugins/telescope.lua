@@ -8,6 +8,7 @@ return { --Tip - check the default bindings before setting them unneccesarily
       -- For major updates, this must be adjusted manually.
       version = "^1.0.0",
     },
+    "debugloop/telescope-undo.nvim",
   },
   keys = {
     -- some telescope bindings
@@ -36,6 +37,11 @@ return { --Tip - check the default bindings before setting them unneccesarily
       ":lua require('telescope').load_extension('harpoon')<cr> <bar> :Telescope harpoon marks<cr>",
       silent = true,
       desc = "telescope harpoon",
+    },
+    {
+      "<leader>ju",
+      "<cmd>Telescope undo<cr>",
+      desc = "undo history",
     },
   },
   opts = {
@@ -102,6 +108,21 @@ return { --Tip - check the default bindings before setting them unneccesarily
     extensions = {
       persisted = {
         layout_config = { width = 0.55, height = 0.55 },
+      },
+      undo = {
+        side_by_side = true,
+        -- layout_strategy = "horizontal",
+        -- layout_config = {
+        --   preview_width = 0.5,
+        -- },
+        layout_strategy = "vertical",
+        layout_config = {
+          height=0.98,
+          width=0.98,
+          preview_cutoff=10,
+          preview_height=0.55,
+        },
+
       },
     },
 
