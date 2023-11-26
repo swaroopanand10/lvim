@@ -1,6 +1,6 @@
 {
   "starter": {
-    "prefix": ["cf"],
+    "prefix": [",cf"],
     "body": [
     "#include <iostream>",
     "using namespace std;",

@@ -74,13 +74,13 @@ vim.api.nvim_create_autocmd("User", {
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
   once = true,
   callback = function()
-    if vim.o.laststatus == 3 then
+    -- if vim.o.laststatus == 3 then
       vim.o.laststatus = 0
       require("lualine").hide({ unhide = false })
       vim.api.nvim_set_hl(0, "Statusline", { fg = "#1b1d2b", bg = "#000000" })
       vim.api.nvim_set_hl(0, "StatuslineNC", { bold = true, fg = "#1b1d2b", bg = "#000000" })
       vim.cmd([[set statusline=%{repeat('─',winwidth('.'))}]])
-    end
+    -- end
   end,
 })
 

@@ -43,6 +43,22 @@ return { --Tip - check the default bindings before setting them unneccesarily
       "<cmd>Telescope undo<cr>",
       desc = "undo history",
     },
+    {
+      "<leader>j,",
+      -- "<cmd>Telescope undo<cr>",
+      function()
+        require("telescope.builtin").find_files({ cwd = require("telescope.utils").buffer_dir() })
+      end,
+      desc = "find files(normal) directory of current file",
+    },
+    {
+      "<leader>j.",
+      -- "<cmd>Telescope undo<cr>",
+      function()
+        require("telescope.builtin").find_files({ cwd = require("telescope.utils").buffer_dir(), hidden = true })
+      end,
+      desc = "find files(normal) directory of current file",
+    },
   },
   opts = {
 
@@ -117,12 +133,11 @@ return { --Tip - check the default bindings before setting them unneccesarily
         -- },
         layout_strategy = "vertical",
         layout_config = {
-          height=0.98,
-          width=0.98,
-          preview_cutoff=10,
-          preview_height=0.55,
+          height = 0.98,
+          width = 0.98,
+          preview_cutoff = 10,
+          preview_height = 0.55,
         },
-
       },
     },
 
