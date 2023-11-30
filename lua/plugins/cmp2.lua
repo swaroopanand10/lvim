@@ -6,6 +6,7 @@ return {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
+    -- "hrsh7th/cmp-calc",
     "saadparwaiz1/cmp_luasnip",
   },
   opts = function()
@@ -30,6 +31,7 @@ return {
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.abort(),
         ["<CR>"] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        -- ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item in this case.
         ["<S-CR>"] = cmp.mapping.confirm({
           behavior = cmp.ConfirmBehavior.Replace,
           select = true,
@@ -73,6 +75,8 @@ return {
         { name = "luasnip" },
         { name = "buffer" },
         { name = "path" },
+        { name = "neorg" },
+        -- { name = "calc" },
       }),
       formatting = {
         format = function(_, item)

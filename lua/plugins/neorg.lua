@@ -1,6 +1,10 @@
 return {
   "nvim-neorg/neorg",
-  dependencies = { { "nvim-lua/plenary.nvim" }, { "nvim-neorg/neorg-telescope" } },
+  dependencies = {
+    { "nvim-lua/plenary.nvim" },
+    { "nvim-neorg/neorg-telescope" },
+    { "nvim-telescope/telescope.nvim" },
+  },
   keys = {
     {
       "<leader>jnn",
@@ -50,7 +54,7 @@ return {
       "<leader>jnr",
       "<cmd>:Neorg return<cr>",
       silent = true,
-      desc = "Neorg search files in current workspace",
+      desc = "Neorg return",
     },
     -- {
     --   "<leader>jne",
@@ -65,8 +69,8 @@ return {
     --   desc = "insert file link",
     -- },
   },
-  -- ft = "norg", -- lazy load on filetype
-  cmd = "Neorg", -- lazy load on command, allows you to autocomplete :Neorg regardless of whether it's loaded yet
+  ft = "norg", -- lazy load on filetype
+  -- cmd = "Neorg", -- lazy load on command, allows you to autocomplete :Neorg regardless of whether it's loaded yet
   --  (you could also just remove both lazy loading things)
   priority = 30, -- treesitter is on default priority of 50, neorg should load after it.
   build = ":Neorg sync-parsers",
@@ -83,11 +87,13 @@ return {
         },
       },
       ["core.integrations.telescope"] = {},
-      -- ["core.completions"] = {
-      --   config = {
-      --     engine = "nvim-cmp",
-      --   },
-      -- },
+      ["core.completion"] = {
+        config = {
+          engine = "nvim-cmp",
+        },
+      },
+      ["core.export"] = {},
+      ["core.summary"] = {},
     },
   },
 }

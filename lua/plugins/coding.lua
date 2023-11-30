@@ -40,6 +40,19 @@ return {
       })
     end,
   },
+  {
+    "Apeiros-46B/qalc.nvim",
+    cmd = "Qalc",
+    opts = {
+      -- extra command arguments for Qalculate
+      -- do NOT use the option `-t`/`--terse`; it will break the plugin
+      -- example: { '--set', 'angle deg' } to use degrees as the default angle unit
+      cmd_args = {'--set', 'fr 5 appr 3'}, -- table 
+      -- fr -> 5 = dual and 0 = off
+      -- appr -> 3 = dual and 2 = approximate
+    },
+
+  },
   -- {
   --   -- I think that we can configure lspconfig servers like this normally without overidding the lazyvim default setted options but,
   --   -- I don't think we need to configure empty servers as they are pre-configured with defaults when they are installed(so just put them in mason)
