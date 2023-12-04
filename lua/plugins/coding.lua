@@ -47,7 +47,9 @@ return {
       -- extra command arguments for Qalculate
       -- do NOT use the option `-t`/`--terse`; it will break the plugin
       -- example: { '--set', 'angle deg' } to use degrees as the default angle unit
-      cmd_args = {'--set', 'fr 5 appr 3'}, -- table 
+      -- cmd_args = {'--set', 'fr 5 appr 3'}, -- this was not working
+      -- cmd_args = {'--set', 'fr 5', '--set', 'appr 3'}, -- table 
+      cmd_args = {'--set', 'fr 5', '--set', 'appr 3'}, -- this is working
       -- fr -> 5 = dual and 0 = off
       -- appr -> 3 = dual and 2 = approximate
     },

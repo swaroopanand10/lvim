@@ -25,6 +25,9 @@ map("n", "<A-l>", "<C-w>l", opts)
 map("n", "<leader>jL", "<cmd>LspStop<cr>", { desc = "stop lsp", silent = true })
 map("n", "<leader>jl", "<cmd>LazyRoot<cr>", { desc = "lazyroot command", silent = true })
 
+-- for nvim-cmp goint to next line without selecting any entry
+map("i", "<A-cr>", "<c-j>", { desc = "abort cmp then press enter", silent = true })
+
 -- keymaps for manupulating window using nvim_window_picker
 map("n", "<leader>jww", function()
   local winid = require("window-picker").pick_window()
@@ -112,7 +115,7 @@ map("n", "<leader>jx", function()
     require("lualine").hide({ unhide = true })
     vim.o.laststatus = 3
     vim.api.nvim_set_hl(0, "Statusline", {})
-    vim.api.nvim_set_hl(0, "StatuslineNC", {fg = "#3b4261"})
+    vim.api.nvim_set_hl(0, "StatuslineNC", { fg = "#3b4261" })
   end
 end, { desc = "toggle statusbar", silent = true })
 
@@ -130,7 +133,7 @@ map("n", "<C-i>", function()
     require("lualine").hide({ unhide = true })
     vim.o.laststatus = 3
     vim.api.nvim_set_hl(0, "Statusline", {})
-    vim.api.nvim_set_hl(0, "StatuslineNC", {fg = "#3b4261"})
+    vim.api.nvim_set_hl(0, "StatuslineNC", { fg = "#3b4261" })
   end
 end, { desc = "toggle statusbar", silent = true })
 
@@ -138,43 +141,52 @@ end, { desc = "toggle statusbar", silent = true })
 map("n", "<leader>ja", function()
   if vim.opt_local.number:get() or vim.opt_local.relativenumber:get() then
     -- vim.cmd([[windo if &filetype != 'noetree'| set nonumber | set norelativenumber | endif]])
-    vim.cmd([[let s:currentWindow = winnr() | windo if &filetype != 'noetree'| set nonumber | set norelativenumber | endif | execute s:currentWindow . "wincmd w"]]) -- this helps in keeping focus to current window
+    vim.cmd(
+      [[let s:currentWindow = winnr() | windo if &filetype != 'neotree'| set nonumber | set norelativenumber | endif | execute s:currentWindow . "wincmd w"]]
+    ) -- this helps in keeping focus to current window
   else
     -- vim.cmd([[windo if &filetype != 'noetree'| set number | set relativenumber | endif]])
-    vim.cmd([[let s:currentWindow = winnr() | windo if &filetype != 'noetree'| set number | set relativenumber | endif | execute s:currentWindow . "wincmd w"]])
+    vim.cmd(
+      [[let s:currentWindow = winnr() | windo if &filetype != 'neotree'| set number | set relativenumber | endif | execute s:currentWindow . "wincmd w"]]
+    )
   end
 end, { desc = "toggle lineno on all windows", silent = true })
-
 
 -- mappings for neorg
 local neorg_callbacks = require("neorg.core.callbacks")
 
 neorg_callbacks.on_event("core.keybinds.events.enable_keybinds", function(_, keybinds)
-    -- Map all the below keybinds only when the "norg" mode is active
-    keybinds.map_event_to_mode("norg", {
-        n = { -- Bind keys in normal mode
-            { "<leader>jna", "core.integrations.telescope.insert_file_link" },
-            { "<leader>jne", "core.integrations.telescope.insert_link" },
-        },
+  -- Map all the below keybinds only when the "norg" mode is active
+  keybinds.map_event_to_mode("norg", {
+    n = { -- Bind keys in normal mode
+      { "<leader>jna", "core.integrations.telescope.insert_file_link" },
+      { "<leader>jne", "core.integrations.telescope.insert_link" },
+    },
 
-        i = { -- Bind in insert mode
-            -- { "<C-.>", "core.integrations.telescope.insert_link" },
-            -- { "<C-,>", "core.integrations.telescope.insert_file_link" },
-        },
-    }, {
-        desc = "insert link",
-        silent = true,
-        noremap = true,
-    })
+    i = { -- Bind in insert mode
+      -- { "<C-.>", "core.integrations.telescope.insert_link" },
+      -- { "<C-,>", "core.integrations.telescope.insert_file_link" },
+    },
+  }, {
+    desc = "insert link",
+    silent = true,
+    noremap = true,
+  })
 end)
 
 -- keympas for custom cumpilation
 vim.cmd(
+  [[autocmd filetype cpp nnoremap <C-x> :w <bar> silent !g++ -O2 % &>%:p:h/out.txt -o %:p:h/a.out && %:p:h/a.out < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR>]]
+)
+vim.cmd(
   [[autocmd filetype cpp nnoremap <F9> :w <bar> silent !g++ -O2 % &>%:p:h/out.txt -o %:p:h/a.out && %:p:h/a.out < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR>]]
 )
 vim.cmd(
-  [[autocmd filetype c nnoremap <F9> :w <bar> silent !gcc -O2 % &>%:p:h/out.txt -o %:p:h/a.out && %:p:h/a.out < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR>]]
+  [[autocmd filetype c nnoremap <C-x> :w <bar> silent !gcc -O2 % &>%:p:h/out.txt -o %:p:h/a.out && %:p:h/a.out < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR>]]
 )
-vim.cmd([[autocmd filetype cpp nnoremap <C-x> :!%:p:h/a.out < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR>]])
-vim.cmd([[ autocmd filetype python nnoremap <C-x> :w <bar> silent !python % < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR> ]]) -- had to change the shortcut form C-c to C-x so that i can cancel the buggy code at any time
+vim.cmd([[autocmd filetype cpp nnoremap <C-S-x> :!%:p:h/a.out < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR>]])
+vim.cmd([[autocmd filetype c nnoremap <C-S-x> :!%:p:h/a.out < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR>]])
+vim.cmd(
+  [[ autocmd filetype python nnoremap <C-x> :w <bar> silent !python % < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR> ]]
+) -- had to change the shortcut form C-c to C-x so that i can cancel the buggy code at any time
 vim.cmd([[ autocmd filetype javascript nnoremap <C-x> :w <bar> silent !node % &> %:p:h/out.txt <Enter><CR> ]]) -- had to change the shortcut form C-c to C-x so that i can cancel the buggy code at any time
