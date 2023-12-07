@@ -57,7 +57,7 @@ return { --Tip - check the default bindings before setting them unneccesarily
       function()
         require("telescope.builtin").find_files({ cwd = require("telescope.utils").buffer_dir(), hidden = true })
       end,
-      desc = "find files(normal) directory of current file",
+      desc = "find files(all) directory of current file",
     },
   },
   opts = {
