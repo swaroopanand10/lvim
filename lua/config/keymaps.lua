@@ -120,7 +120,7 @@ map("n", "<leader>jx", function()
 end, { desc = "toggle statusbar", silent = true })
 
 -- Keymap for toggling both statusbar and winbar
-map("n", "<C-i>", function()
+map("n", "<C-q>", function()
   if vim.o.laststatus == 3 then
     vim.o.laststatus = 0
     require("lualine").hide({ unhide = false })
@@ -175,18 +175,18 @@ neorg_callbacks.on_event("core.keybinds.events.enable_keybinds", function(_, key
 end)
 
 -- keympas for custom cumpilation
+-- vim.cmd(
+--   [[autocmd filetype cpp nnoremap <C-x> :w <bar> silent !g++ -O2 % &>%:p:h/out.txt -o %:p:h/a.out && %:p:h/a.out < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR>]]
+-- )
+-- vim.cmd(
+--   [[autocmd filetype cpp nnoremap <F9> :w <bar> silent !g++ -O2 % &>%:p:h/out.txt -o %:p:h/a.out && %:p:h/a.out < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR>]]
+-- )
 vim.cmd(
-  [[autocmd filetype cpp nnoremap <C-x> :w <bar> silent !g++ -O2 % &>%:p:h/out.txt -o %:p:h/a.out && %:p:h/a.out < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR>]]
-)
-vim.cmd(
-  [[autocmd filetype cpp nnoremap <F9> :w <bar> silent !g++ -O2 % &>%:p:h/out.txt -o %:p:h/a.out && %:p:h/a.out < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR>]]
-)
-vim.cmd(
-  [[autocmd filetype c nnoremap <C-x> :w <bar> silent !gcc -O2 % &>%:p:h/out.txt -o %:p:h/a.out && %:p:h/a.out < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR>]]
+  [[autocmd filetype c nnoremap <C-i> :w <bar> silent !gcc -O2 % &>%:p:h/out.txt -o %:p:h/a.out && %:p:h/a.out < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR>]]
 )
 vim.cmd([[autocmd filetype cpp nnoremap <C-S-x> :!%:p:h/a.out < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR>]])
 vim.cmd([[autocmd filetype c nnoremap <C-S-x> :!%:p:h/a.out < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR>]])
 vim.cmd(
-  [[ autocmd filetype python nnoremap <C-x> :w <bar> silent !python % < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR> ]]
+  [[autocmd filetype python nnoremap <C-x> :w <bar> silent !python % < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR> ]]
 ) -- had to change the shortcut form C-c to C-x so that i can cancel the buggy code at any time
-vim.cmd([[ autocmd filetype javascript nnoremap <C-x> :w <bar> silent !node % &> %:p:h/out.txt <Enter><CR> ]]) -- had to change the shortcut form C-c to C-x so that i can cancel the buggy code at any time
+vim.cmd([[autocmd filetype javascript nnoremap <C-x> :w <bar> silent !node % &> %:p:h/out.txt <Enter><CR> ]]) -- had to change the shortcut form C-c to C-x so that i can cancel the buggy code at any time

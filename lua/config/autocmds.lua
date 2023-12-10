@@ -9,6 +9,13 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "cpp" },
+  callback = function()
+    vim.keymap.set("n", '<C-x>', "<cmd>:w <bar> silent !g++ -O2 % &>%:p:h/out.txt -o %:p:h/a.out && %:p:h/a.out < %:p:h/in.txt &> %:p:h/out.txt <cr>",{ buffer = buf_id, desc = desc })
+  end,
+})
+
 -- adding features in mini.files to open files in desirabe splits and selected window
 local map_split = function(buf_id, lhs, direction)
   local rhs = function()
@@ -75,14 +82,13 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
   once = true,
   callback = function()
     -- if vim.o.laststatus == 3 then
-      vim.o.laststatus = 0
-      require("lualine").hide({ unhide = false })
-      vim.api.nvim_set_hl(0, "Statusline", { fg = "#1b1d2b", bg = "#000000" })
-      vim.api.nvim_set_hl(0, "StatuslineNC", { bold = true, fg = "#1b1d2b", bg = "#000000" })
-      vim.cmd([[set statusline=%{repeat('─',winwidth('.'))}]])
+    vim.o.laststatus = 0
+    require("lualine").hide({ unhide = false })
+    vim.api.nvim_set_hl(0, "Statusline", { fg = "#1b1d2b", bg = "#000000" })
+    vim.api.nvim_set_hl(0, "StatuslineNC", { bold = true, fg = "#1b1d2b", bg = "#000000" })
+    vim.cmd([[set statusline=%{repeat('─',winwidth('.'))}]])
     -- end
   end,
 })
 
-
-vim.api.nvim_del_augroup_by_name('lazyvim_resize_splits') -- disabling the split resizing after terminal resizing
+vim.api.nvim_del_augroup_by_name("lazyvim_resize_splits") -- disabling the split resizing after terminal resizing

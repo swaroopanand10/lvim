@@ -48,12 +48,27 @@ return {
       -- do NOT use the option `-t`/`--terse`; it will break the plugin
       -- example: { '--set', 'angle deg' } to use degrees as the default angle unit
       -- cmd_args = {'--set', 'fr 5 appr 3'}, -- this was not working
-      -- cmd_args = {'--set', 'fr 5', '--set', 'appr 3'}, -- table 
-      cmd_args = {'--set', 'fr 5', '--set', 'appr 3'}, -- this is working
+      -- cmd_args = {'--set', 'fr 5', '--set', 'appr 3'}, -- table
+      cmd_args = { "--set", "fr 5", "--set", "appr 3" }, -- this is working
       -- fr -> 5 = dual and 0 = off
       -- appr -> 3 = dual and 2 = approximate
     },
-
+  },
+  {
+    "luckasRanarison/nvim-devdocs",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    cmd = "DevdocsOpenCurrent",
+    opts = {
+      -- previewer_cmd = "glow", -- for example: "glow"
+      -- cmd_args = { "-s", "dark", "-w", "80" },
+      -- picker_cmd = true,
+      -- picker_cmd_args = { "-p" },
+      ensure_installed = { "rust", "c", "cpp", "javascript" },
+    },
   },
   -- {
   --   -- I think that we can configure lspconfig servers like this normally without overidding the lazyvim default setted options but,

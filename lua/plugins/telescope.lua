@@ -59,6 +59,11 @@ return { --Tip - check the default bindings before setting them unneccesarily
       end,
       desc = "find files(all) directory of current file",
     },
+    {
+      "<leader>jH",
+      "<cmd>DevdocsOpenCurrent<cr>",
+      desc = "devdocs opencurrent",
+    },
   },
   opts = {
 

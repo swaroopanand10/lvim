@@ -1,65 +1,105 @@
 return {
-  "ThePrimeagen/harpoon",
+  "theprimeagen/harpoon",
+  branch = "harpoon2",
+  dependencies = { "nvim-lua/plenary.nvim" },
+  config = function()
+    require("harpoon"):setup()
+  end,
+  opts = {
+    settings = {
+      -- save_on_toggle = true,
+      -- sync_on_ui_close = true,
+      -- border_chars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+      -- key = function()
+      --   return vim.loop.cwd()
+      -- end,
+    },
+  },
   keys = {
     {
+      "<leader>hw",
+      function()
+        require("harpoon"):list():append()
+      end,
+      desc = "harpoon add",
+    },
+    {
+      "<leader>hi",
+      function()
+        local harpoon = require("harpoon")
+        harpoon.ui:toggle_quick_menu(harpoon:list())
+      end,
+      desc = "harpoon quick menu",
+    },
+    {
       "<leader>ha",
-      "<cmd>lua require('harpoon.mark').add_file()<cr>",
-      silent = true,
-      desc = "harpoon add file",
+      function()
+        require("harpoon"):list():select(1)
+      end,
+      desc = "harpoon to file 1",
     },
     {
-      "<leader>hr",
-      "<cmd>lua require('harpoon.mark').rm_file()<cr>",
-      silent = true,
-      desc = "harpoon remove file",
+      "<leader>hs",
+      function()
+        require("harpoon"):list():select(2)
+      end,
+      desc = "harpoon to file 2",
     },
     {
-      "<leader>hh",
-      "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>",
-      silent = true,
-      desc = "harpoon menu",
+      "<leader>hd",
+      function()
+        require("harpoon"):list():select(3)
+      end,
+      desc = "harpoon to file 3",
     },
     {
       "<leader>hf",
-      "<cmd>lua require('harpoon.ui').nav_next()<cr>",
-      silent = true,
-      desc = "harpoon next file",
+      function()
+        require("harpoon"):list():select(4)
+      end,
+      desc = "harpoon to file 4",
     },
     {
-      "<leader>hb",
-      "<cmd>lua require('harpoon.ui').nav_prev()<cr>",
-      silent = true,
-      desc = "harpoon prev file",
+      "<leader>hg",
+      function()
+        require("harpoon"):list():select(5)
+      end,
+      desc = "harpoon to file 5",
     },
     {
-      "<leader>h1",
-      "<cmd>lua require('harpoon.ui').nav_file(1)<cr>",
-      silent = true,
-      desc = "file 1",
+      "<leader>hh",
+      function()
+        require("harpoon"):list():select(6)
+      end,
+      desc = "harpoon to file 6:,",
     },
     {
-      "<leader>h2",
-      "<cmd>lua require('harpoon.ui').nav_file(2)<cr>",
-      silent = true,
-      desc = "file 2",
+      "<leader>hk",
+      function()
+        require("harpoon"):list():select(7)
+      end,
+      desc = "harpoon to file 7",
     },
     {
-      "<leader>h3",
-      "<cmd>lua require('harpoon.ui').nav_file(3)<cr>",
-      silent = true,
-      desc = "file 3",
+      "<leader>hl",
+      function()
+        require("harpoon"):list():select(8)
+      end,
+      desc = "harpoon to file 8",
     },
     {
-      "<leader>h4",
-      "<cmd>lua require('harpoon.ui').nav_file(4)<cr>",
-      silent = true,
-      desc = "file 4",
+      "<leader>h;",
+      function()
+        require("harpoon"):list():select(9)
+      end,
+      desc = "harpoon to file 9",
     },
     {
-      "<leader>h5",
-      "<cmd>lua require('harpoon.ui').nav_file(5)<cr>",
-      silent = true,
-      desc = "file 5",
+      "<leader>hj",
+      function()
+        require("harpoon"):list():select(10)
+      end,
+      desc = "harpoon to file 10",
     },
   },
 }
