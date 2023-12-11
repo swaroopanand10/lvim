@@ -27,6 +27,8 @@ map("n", "<leader>jl", "<cmd>LazyRoot<cr>", { desc = "lazyroot command", silent 
 
 -- for nvim-cmp goint to next line without selecting any entry
 map("i", "<A-cr>", "<c-j>", { desc = "abort cmp then press enter", silent = true })
+-- for changing cwd to directory of current buffer
+map("n", "<leader>jd", "<cmd>lcd %:p:h<cr>", {desc = "change the cwd to directory of current buffer"})
 
 -- keymaps for manupulating window using nvim_window_picker
 map("n", "<leader>jww", function()
@@ -41,7 +43,7 @@ map("n", "<A-;>", function()
   if winid then
     vim.api.nvim_set_current_win(winid)
   end
-end, { silent = true })
+end, { silent = true, desc = "switch window" })
 
 map("n", "<leader>jwd", function()
   local winid = require("window-picker").pick_window()
@@ -181,12 +183,12 @@ end)
 -- vim.cmd(
 --   [[autocmd filetype cpp nnoremap <F9> :w <bar> silent !g++ -O2 % &>%:p:h/out.txt -o %:p:h/a.out && %:p:h/a.out < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR>]]
 -- )
-vim.cmd(
-  [[autocmd filetype c nnoremap <C-i> :w <bar> silent !gcc -O2 % &>%:p:h/out.txt -o %:p:h/a.out && %:p:h/a.out < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR>]]
-)
-vim.cmd([[autocmd filetype cpp nnoremap <C-S-x> :!%:p:h/a.out < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR>]])
-vim.cmd([[autocmd filetype c nnoremap <C-S-x> :!%:p:h/a.out < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR>]])
-vim.cmd(
-  [[autocmd filetype python nnoremap <C-x> :w <bar> silent !python % < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR> ]]
-) -- had to change the shortcut form C-c to C-x so that i can cancel the buggy code at any time
-vim.cmd([[autocmd filetype javascript nnoremap <C-x> :w <bar> silent !node % &> %:p:h/out.txt <Enter><CR> ]]) -- had to change the shortcut form C-c to C-x so that i can cancel the buggy code at any time
+-- vim.cmd(
+--   [[autocmd filetype c nnoremap <C-i> :w <bar> silent !gcc -O2 % &>%:p:h/out.txt -o %:p:h/a.out && %:p:h/a.out < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR>]]
+-- )
+-- vim.cmd([[autocmd filetype cpp nnoremap <C-S-x> :!%:p:h/a.out < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR>]])
+-- vim.cmd([[autocmd filetype c nnoremap <C-S-x> :!%:p:h/a.out < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR>]])
+-- vim.cmd(
+--   [[autocmd filetype python nnoremap <C-x> :w <bar> silent !python % < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR> ]]
+-- ) -- had to change the shortcut form C-c to C-x so that i can cancel the buggy code at any time
+-- vim.cmd([[autocmd filetype javascript nnoremap <C-x> :w <bar> silent !node % &> %:p:h/out.txt <Enter><CR> ]]) -- had to change the shortcut form C-c to C-x so that i can cancel the buggy code at any time

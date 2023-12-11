@@ -70,20 +70,20 @@ return {
       ensure_installed = { "rust", "c", "cpp", "javascript" },
     },
   },
-  -- {
-  --   -- I think that we can configure lspconfig servers like this normally without overidding the lazyvim default setted options but,
-  --   -- I don't think we need to configure empty servers as they are pre-configured with defaults when they are installed(so just put them in mason)
-  --   "neovim/nvim-lspconfig",
-  --   opts = {
-  --     -- inlay_hints = { enabled = true },
-  --     -- servers = {
-  --     --   -- tsserver = {},
-  --     --   -- clangd = {},
-  --     --   html = {},
-  --     --   cssls = {},
-  --     --   emmet_ls = {},
-  --     --   bashls = {},
-  --     -- },
-  --   },
-  -- },
+  {
+    -- I think that we can configure lspconfig servers like this normally without overidding the lazyvim default setted options but,
+    -- I don't think we need to configure empty servers as they are pre-configured with defaults when they are installed(so just put them in mason)
+    "neovim/nvim-lspconfig",
+    opts = {
+      inlay_hints = { enabled = true },
+      -- servers = {
+        -- tsserver = {},
+        -- clangd = {},
+      --   html = {},
+      --   cssls = {},
+      --   emmet_ls = {},
+      --   bashls = {},
+      -- },
+    },
+  },
 }

@@ -41,26 +41,26 @@ return {
       -- },
     },
   },
-  {
-    keys = {
-      {
-        "<leader>jd",
-        "<cmd>lcd %:p:h<cr>",
-        -- silent = true,
-        desc = "change cwd to curbuf-dir",
-      },
-
-      {
-        "<leader>jp",
-        "<cmd>:ProjectRoot<cr>",
-        -- silent = true,
-        desc = "run :projectroot to change the cwd by project.nvim",
-      },
-    },
-    "ahmedkhalf/project.nvim",
-    opts = {
-      -- cwd = pwd, rootdir = the latest directory containing file, we can chech both through neotree keybinding in whichkey
-      detection_methods = { "pattern", "lsp" },
-    },
-  },
+  -- {
+  --   keys = {
+  --     {
+  --       "<leader>jd",
+  --       "<cmd>lcd %:p:h<cr>",
+  --       -- silent = true,
+  --       desc = "change cwd to curbuf-dir",
+  --     },
+  --
+  --     {
+  --       "<leader>jp",
+  --       "<cmd>:ProjectRoot<cr>",
+  --       -- silent = true,
+  --       desc = "run :projectroot to change the cwd by project.nvim",
+  --     },
+  --   },
+  --   "ahmedkhalf/project.nvim",
+  --   opts = {
+  --     -- cwd = pwd, rootdir = the latest directory containing file, we can chech both through neotree keybinding in whichkey
+  --     detection_methods = { "pattern", "lsp" },
+  --   },
+  -- },
 }
