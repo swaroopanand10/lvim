@@ -29,12 +29,14 @@ return {
       local red = "#ff0000"
       local red1 = "#F92660"
       local black = "#000000"
+      local blue = "#52b0ef"
       hl.TreesitterContext = {
         -- bg = visualdark,
         bg = dark,
       }
       hl.Cursor = { -- setting cursor colors(only work if vim.o.guicursor will be set in options)
         bg = red1,
+        -- bg = blue,
         -- fg = red1,
       }
 

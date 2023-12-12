@@ -6,7 +6,7 @@
 -- vim.o.winbar = " %t %m" -- without navic
 vim.opt.swapfile = false
 
--- cursor style
+-- cursor style (this will fix the color for cursor)
 vim.opt.guicursor = "n-v-c:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor,a:blinkon100"
 
 --disabling line numbers

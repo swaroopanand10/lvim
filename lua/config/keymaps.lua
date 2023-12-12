@@ -29,6 +29,8 @@ map("n", "<leader>jl", "<cmd>LazyRoot<cr>", { desc = "lazyroot command", silent 
 map("i", "<A-cr>", "<c-j>", { desc = "abort cmp then press enter", silent = true })
 -- for changing cwd to directory of current buffer
 map("n", "<leader>jd", "<cmd>lcd %:p:h<cr>", {desc = "change the cwd to directory of current buffer"})
+-- for quiting neovim after saving without prompt
+map({"n", "i"}, "<C-q>", "<cmd>wqall<cr>", {desc = "quit all after saving"})
 
 -- keymaps for manupulating window using nvim_window_picker
 map("n", "<leader>jww", function()
@@ -122,7 +124,7 @@ map("n", "<leader>jx", function()
 end, { desc = "toggle statusbar", silent = true })
 
 -- Keymap for toggling both statusbar and winbar
-map("n", "<C-q>", function()
+map("n", "<C-i>", function()
   if vim.o.laststatus == 3 then
     vim.o.laststatus = 0
     require("lualine").hide({ unhide = false })

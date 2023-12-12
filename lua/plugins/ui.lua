@@ -116,8 +116,20 @@ return {
     "s1n7ax/nvim-window-picker",
     opts = {
       hint = "floating-big-letter",
-       show_prompt = false,
+      show_prompt = false,
     },
+  },
+  {
+    "mikesmithgh/kitty-scrollback.nvim",
+    enabled = true,
+    lazy = true,
+    cmd = { "KittyScrollbackGenerateKittens", "KittyScrollbackCheckHealth" },
+    event = { "User KittyScrollbackLaunch" },
+    -- version = '*', -- latest stable version, may have breaking changes if major version changed
+    -- version = '^2.0.0', -- pin major version, include fixes and features that do not have breaking changes
+    config = function()
+      require("kitty-scrollback").setup()
+    end,
   },
   -- {
   --   "ten3roberts/window-picker.nvim",
