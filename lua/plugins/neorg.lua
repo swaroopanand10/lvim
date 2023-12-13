@@ -7,54 +7,72 @@ return {
   },
   keys = {
     {
-      "<leader>jnn",
+      "<leader>in",
       "<cmd>:Neorg<cr>",
       silent = true,
       desc = "neorg menu",
     },
     {
-      "<leader>jnp",
+      "<leader>ip",
       "<cmd>:Neorg sync-parsers<cr>",
       silent = true,
       desc = "Neorg sync-parsers",
     },
     {
-      "<leader>jni",
+      "<leader>ii",
       "<cmd>:Neorg index<cr>",
       silent = true,
       desc = "Neorg index",
     },
     {
-      "<leader>jnw",
+      "<leader>iw",
       "<cmd>:Telescope neorg switch_workspace<cr>",
       silent = true,
       desc = "Neorg switch workspace",
     },
 
     {
-      "<leader>jnl",
+      "<leader>il",
       "<cmd>:Telescope neorg find_linkable<cr>",
       silent = true,
       desc = "Neorg find_linkable in current workspace",
     },
 
     {
-      "<leader>jnh",
+      "<leader>ih",
       "<cmd>:Telescope neorg search_headings<cr>",
       silent = true,
       desc = "Neorg search headings in current file",
     },
     {
-      "<leader>jnf",
+      "<leader>if",
       "<cmd>:Telescope neorg find_norg_files<cr>",
       silent = true,
       desc = "Neorg search files in current workspace",
     },
     {
-      "<leader>jnr",
+      "<leader>ir",
       "<cmd>:Neorg return<cr>",
       silent = true,
       desc = "Neorg return",
+    },
+    {
+      "<leader>im",
+      "<cmd>:Neorg inject-metadata<cr>",
+      silent = true,
+      desc = "Neorg inject-metadata",
+    },
+    {
+      "<leader>is",
+      "<cmd>:Neorg generate-workspace-summary<cr>",
+      silent = true,
+      desc = "Neorg generate-workspace-summary",
+    },
+    {
+      "<leader>ij",
+      "<cmd>:Neorg journal<cr>",
+      silent = true,
+      desc = "Neorg journal menu",
     },
     -- {
     --   "<leader>jne",
@@ -81,7 +99,12 @@ return {
       ["core.dirman"] = { -- Manages Neorg workspaces
         config = {
           workspaces = {
-            notes = "~/notes",
+            notes = "~/notes/default",
+            cprg = "~/notes/cprg",
+            cppprg = "~/notes/cppprg",
+            asmprg = "~/notes/asmprg",
+            networking = "~/notes/networking",
+            comparch = "~/notes/comparch",
           },
           default_workspace = "notes",
         },

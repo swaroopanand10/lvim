@@ -163,8 +163,8 @@ neorg_callbacks.on_event("core.keybinds.events.enable_keybinds", function(_, key
   -- Map all the below keybinds only when the "norg" mode is active
   keybinds.map_event_to_mode("norg", {
     n = { -- Bind keys in normal mode
-      { "<leader>jna", "core.integrations.telescope.insert_file_link" },
-      { "<leader>jne", "core.integrations.telescope.insert_link" },
+      { "<leader>ia", "core.integrations.telescope.insert_file_link" },
+      { "<leader>ie", "core.integrations.telescope.insert_link" },
     },
 
     i = { -- Bind in insert mode
