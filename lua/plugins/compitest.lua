@@ -38,19 +38,19 @@ return {
     },
     {
       "<leader>jna",
-      "<cmd>:CompetiTest add testcase<cr>",
+      "<cmd>:CompetiTest add_testcase<cr>",
       silent = true,
       desc = "add testcases",
     },
     {
       "<leader>jne",
-      "<cmd>:CompetiTest edit testcase<cr>",
+      "<cmd>:CompetiTest edit_testcase<cr>",
       silent = true,
       desc = "edit testcases",
     },
     {
       "<leader>jnA",
-      "<cmd>:CompetiTest delete testcase<cr>",
+      "<cmd>:CompetiTest delete_testcase<cr>",
       silent = true,
       desc = "delete testcases",
     },

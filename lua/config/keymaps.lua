@@ -4,33 +4,40 @@
 local map = vim.keymap.set
 local opts = { silent = true }
 
--- for exiting insert mode
+-- Exiting insert mode
 map("i", "jk", "<Esc>", opts)
 map("i", "kj", "<Esc>", opts)
 
--- for switching to last buffer
+-- Switching to last buffer
 map("n", "<C-b>", "<C-6>", opts)
 
--- for resizing window sizes
+-- Resizing window sizes
 map("n", "<C-h>", ":vertical resize -2<CR>", opts)
 map("n", "<C-k>", ":resize -2<CR>", opts)
 map("n", "<C-j>", ":resize +2<CR>", opts)
 map("n", "<C-l>", ":vertical resize +2<CR>", opts)
 
---for switching between windows
+-- Switching between windows
 map("n", "<A-h>", "<C-w>h", opts)
 map("n", "<A-j>", "<C-w>j", opts)
 map("n", "<A-k>", "<C-w>k", opts)
 map("n", "<A-l>", "<C-w>l", opts)
+
+-- Stopping lsp
 map("n", "<leader>jL", "<cmd>LspStop<cr>", { desc = "stop lsp", silent = true })
+
+-- Finding about the directories info
 map("n", "<leader>jl", "<cmd>LazyRoot<cr>", { desc = "lazyroot command", silent = true })
 
--- for nvim-cmp goint to next line without selecting any entry
+-- Nvim-cmp goint to next line without selecting any entry
 map("i", "<A-cr>", "<c-j>", { desc = "abort cmp then press enter", silent = true })
--- for changing cwd to directory of current buffer
+
+-- Changing cwd to directory of current buffer
 map("n", "<leader>jd", "<cmd>lcd %:p:h<cr>", {desc = "change the cwd to directory of current buffer"})
--- for quiting neovim after saving without prompt
-map({"n", "i"}, "<C-q>", "<cmd>wqall<cr>", {desc = "quit all after saving"})
+
+-- Quiting neovim after saving without prompt
+map({"n", "i"}, "<C-q>", "<cmd>wqa<cr>", {desc = "quit all after saving"})
+map({"n", "i"}, "<C-S-q>", "<cmd>qa!<cr>", {desc = "quit all without saving"})
 
 -- keymaps for manupulating window using nvim_window_picker
 map("n", "<leader>jww", function()
