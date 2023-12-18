@@ -94,7 +94,8 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     vim.keymap.set(
       "n",
       "<C-x>",
-      "<cmd>:w <bar> silent !g++ -O2 % &>%:p:h/out.txt -o %:p:h/%:r.out && %:p:h/%:r.out < %:p:h/in.txt &> %:p:h/out.txt <cr>",
+      -- "<cmd>:w <bar> silent !g++ -O2 % &>%:p:h/out.txt -o %:p:h/%:r.out && %:p:h/%:r.out < %:p:h/in.txt &> %:p:h/out.txt <cr>",
+      "<cmd>:w <bar> silent !g++ % &>%:p:h/out.txt -o %:p:h/bin.out && %:p:h/bin.out < %:p:h/in.txt &> %:p:h/out.txt <cr>",
       { desc = "cpp compilation" }
     )
   end,
@@ -106,7 +107,8 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     vim.keymap.set(
       "n",
       "<C-x>",
-      "<cmd>:w <bar> silent !gcc -O2 % &>%:p:h/out.txt -o %:p:h/%:r.out && %:p:h/%:r.out < %:p:h/in.txt &> %:p:h/out.txt <cr>",
+      -- "<cmd>:w <bar> silent !gcc -O2 % &>%:p:h/out.txt -o %:p:h/%:r.out && %:p:h/%:r.out < %:p:h/in.txt &> %:p:h/out.txt <cr>",
+      "<cmd>:w <bar> silent !gcc % &>%:p:h/out.txt -o %:p:h/bin.out && %:p:h/bin.out < %:p:h/in.txt &> %:p:h/out.txt <cr>",
       { desc = "c compilation" }
     )
   end,
@@ -118,7 +120,8 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     vim.keymap.set(
       "n",
       "<C-S-x>",
-      "<cmd>:!%:p:h/%:r.out < %:p:h/in.txt &> %:p:h/out.txt <cr>",
+      -- "<cmd>:!%:p:h/%:r.out < %:p:h/in.txt &> %:p:h/out.txt <cr>",
+      "<cmd>:!%:p:h/bin.out < %:p:h/in.txt &> %:p:h/out.txt <cr>",
       { desc = "c,cpp binary exec" }
     )
   end,
