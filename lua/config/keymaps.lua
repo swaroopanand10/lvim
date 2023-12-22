@@ -11,6 +11,10 @@ map("i", "kj", "<Esc>", opts)
 -- Switching to last buffer
 map("n", "<C-b>", "<C-6>", opts)
 
+-- Paste only last yanked text keybinds
+map("n", "yp", '"0p', opts)
+map("n", "yP", '"0P', opts)
+
 -- Resizing window sizes
 map("n", "<C-h>", ":vertical resize -2<CR>", opts)
 map("n", "<C-k>", ":resize -2<CR>", opts)
