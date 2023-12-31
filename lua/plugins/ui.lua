@@ -131,6 +131,13 @@ return {
       require("kitty-scrollback").setup()
     end,
   },
+  {
+    "m4xshen/hardtime.nvim",
+    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+    cmd = {"Hardtime"},
+    event = {"BufEnter"},
+    opts = {},
+  },
   -- {
   --   "ten3roberts/window-picker.nvim",
   --   keys = {
