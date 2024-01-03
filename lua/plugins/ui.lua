@@ -10,7 +10,7 @@ return {
         --   jump_labels = true,
         -- },
         search = {
-          enabled = false,
+          -- enabled = false,
         },
       },
     },
@@ -134,6 +134,14 @@ return {
   {
     "m4xshen/hardtime.nvim",
     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+    keys = {
+      {
+        "<leader>jj",
+        "<cmd>Hardtime toggle<cr>",
+        silent = true,
+        desc = "hardtime toggle",
+      },
+    },
     cmd = {"Hardtime"},
     event = {"BufEnter"},
     opts = {},

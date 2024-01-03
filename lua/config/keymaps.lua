@@ -189,19 +189,6 @@ neorg_callbacks.on_event("core.keybinds.events.enable_keybinds", function(_, key
   })
 end)
 
--- keympas for custom cumpilation
--- vim.cmd(
---   [[autocmd filetype cpp nnoremap <C-x> :w <bar> silent !g++ -O2 % &>%:p:h/out.txt -o %:p:h/a.out && %:p:h/a.out < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR>]]
--- )
--- vim.cmd(
---   [[autocmd filetype cpp nnoremap <F9> :w <bar> silent !g++ -O2 % &>%:p:h/out.txt -o %:p:h/a.out && %:p:h/a.out < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR>]]
--- )
--- vim.cmd(
---   [[autocmd filetype c nnoremap <C-i> :w <bar> silent !gcc -O2 % &>%:p:h/out.txt -o %:p:h/a.out && %:p:h/a.out < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR>]]
--- )
--- vim.cmd([[autocmd filetype cpp nnoremap <C-S-x> :!%:p:h/a.out < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR>]])
--- vim.cmd([[autocmd filetype c nnoremap <C-S-x> :!%:p:h/a.out < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR>]])
--- vim.cmd(
---   [[autocmd filetype python nnoremap <C-x> :w <bar> silent !python % < %:p:h/in.txt &> %:p:h/out.txt <Enter><CR> ]]
--- ) -- had to change the shortcut form C-c to C-x so that i can cancel the buggy code at any time
--- vim.cmd([[autocmd filetype javascript nnoremap <C-x> :w <bar> silent !node % &> %:p:h/out.txt <Enter><CR> ]]) -- had to change the shortcut form C-c to C-x so that i can cancel the buggy code at any time
+-- mapping for scrolling up and down
+map("n", "<A-e>", "<C-y>", opts)
+map("n", "<A-S-e>", "<C-e>", opts)
