@@ -43,6 +43,10 @@ map("n", "<leader>jd", "<cmd>lcd %:p:h<cr>", {desc = "change the cwd to director
 map({"n", "i"}, "<C-q>", "<cmd>wqa<cr>", {desc = "quit all after saving"})
 map({"n", "i"}, "<C-S-q>", "<cmd>qa!<cr>", {desc = "quit all without saving"})
 
+-- mapping for scrolling up and down
+map("n", "<A-r>", "<C-y>", opts)
+map("n", "<A-e>", "<C-e>", opts)
+
 -- keymaps for manupulating window using nvim_window_picker
 map("n", "<leader>jww", function()
   local winid = require("window-picker").pick_window()
@@ -166,29 +170,3 @@ map("n", "<leader>ja", function()
     )
   end
 end, { desc = "toggle lineno on all windows", silent = true })
-
--- mappings for neorg
-local neorg_callbacks = require("neorg.core.callbacks")
-
-neorg_callbacks.on_event("core.keybinds.events.enable_keybinds", function(_, keybinds)
-  -- Map all the below keybinds only when the "norg" mode is active
-  keybinds.map_event_to_mode("norg", {
-    n = { -- Bind keys in normal mode
-      { "<leader>ia", "core.integrations.telescope.insert_file_link" },
-      { "<leader>ie", "core.integrations.telescope.insert_link" },
-    },
-
-    i = { -- Bind in insert mode
-      -- { "<C-.>", "core.integrations.telescope.insert_link" },
-      -- { "<C-,>", "core.integrations.telescope.insert_file_link" },
-    },
-  }, {
-    desc = "insert link",
-    silent = true,
-    noremap = true,
-  })
-end)
-
--- mapping for scrolling up and down
-map("n", "<A-e>", "<C-y>", opts)
-map("n", "<A-S-e>", "<C-e>", opts)

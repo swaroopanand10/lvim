@@ -13,7 +13,7 @@ return {
     { "<leader>kr", "<cmd>FzfLua grep_curbuf<cr>", desc = "fzflua curbuf grep fuzzy" },
     { "<leader>kw", "<cmd>FzfLua grep_visual<cr>", desc = "fzflua visualgrep workspace fuzzy" },
     { "<leader>kW", "<cmd>FzfLua live_grep_glob<cr>", desc = "fzflua livegrep workspace regex" },
-    { "<leader>kf", "<cmd>FzfLua files<cr>", desc = "fzflua find files" },
+    -- { "<leader>kf", "<cmd>FzfLua files<cr>", desc = "fzflua find files" },
     -- { "<leader>kp", "<cmd>FzfLua files cwd=/home/swaroop/Projects/<cr>", desc = "fzflua find files" },
     { "<leader>kb", "<cmd>FzfLua buffers<cr>", desc = "fzflua find buffers" },
     { "<leader>kl", "<cmd>FzfLua blines<cr>", desc = "fzflua find bufferlines fuzzy" },
@@ -36,14 +36,26 @@ return {
       silent = true,
       desc = "fuzzy search all directories in ~",
     },
-
+    { -- this will search all(including hidden) files in the git repo
+      "<leader>kf",
+      function()
+        require("fzf-lua").git_files({
+          prompt = "LS> ",
+          cmd = "find -type f",
+          -- cwd = "~/",
+          winopts = { preview = { hidden = "true" } },
+        })
+      end,
+      silent = true,
+      desc = "fuzzy search all files in git repo",
+    },
     {
       "<leader>kO",
       function()
         require("fzf-lua").files({
           prompt = "LS> ",
           cmd = "find . -type d",
-          cwd = "cwd",
+          -- cwd = "cwd", -- it was saying that value cwd is depreciated
           winopts = { preview = { hidden = "true" } },
         })
       end,

@@ -1,9 +1,11 @@
 let SessionLoad = 1
 let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
 let v:this_session=expand("<sfile>:p")
+let NetrwTopLvlMenu = "Netrw."
+let NetrwMenuPriority =  80 
 silent only
 silent tabonly
-cd ~/code/prg/cpp
+cd ~/code/prg/rs/sample
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
@@ -13,13 +15,14 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +1 cpp.cpp
+badd +3 main.rs
+badd +1 ~/code/prg/rs/sample
 badd +1 in.txt
-badd +1 out.txt
-badd +1 peda-session-exe.txt
+badd +2 out.txt
 argglobal
 %argdel
-edit cpp.cpp
+$argadd ~/code/prg/rs/sample
+edit main.rs
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -40,13 +43,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 61 + 43) / 87)
-exe '2resize ' . ((&lines * 11 + 11) / 22)
-exe 'vert 2resize ' . ((&columns * 25 + 43) / 87)
-exe '3resize ' . ((&lines * 10 + 11) / 22)
-exe 'vert 3resize ' . ((&columns * 25 + 43) / 87)
+wincmd =
 argglobal
-balt in.txt
 setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -55,23 +53,42 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-4
-normal! zo
-7
-normal! zo
-let s:l = 1 - ((0 * winheight(0) + 11) / 22)
+let s:l = 3 - ((2 * winheight(0) + 15) / 31)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 3
+normal! 09|
+lcd ~/code/prg/rs/sample
+wincmd w
+argglobal
+if bufexists(fnamemodify("~/code/prg/rs/sample/in.txt", ":p")) | buffer ~/code/prg/rs/sample/in.txt | else | edit ~/code/prg/rs/sample/in.txt | endif
+if &buftype ==# 'terminal'
+  silent file ~/code/prg/rs/sample/in.txt
+endif
+balt ~/code/prg/rs/sample/main.rs
+setlocal fdm=indent
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 1 - ((0 * winheight(0) + 7) / 15)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 1
 normal! 0
+lcd ~/code/prg/rs/sample
 wincmd w
 argglobal
-if bufexists(fnamemodify("in.txt", ":p")) | buffer in.txt | else | edit in.txt | endif
+if bufexists(fnamemodify("~/code/prg/rs/sample/out.txt", ":p")) | buffer ~/code/prg/rs/sample/out.txt | else | edit ~/code/prg/rs/sample/out.txt | endif
 if &buftype ==# 'terminal'
-  silent file in.txt
+  silent file ~/code/prg/rs/sample/out.txt
 endif
-balt cpp.cpp
+balt ~/code/prg/rs/sample/in.txt
 setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -80,39 +97,15 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 1 - ((0 * winheight(0) + 5) / 11)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 1
-normal! 0
-wincmd w
-argglobal
-if bufexists(fnamemodify("out.txt", ":p")) | buffer out.txt | else | edit out.txt | endif
-if &buftype ==# 'terminal'
-  silent file out.txt
-endif
-balt in.txt
-setlocal fdm=indent
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=99
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-let s:l = 2 - ((1 * winheight(0) + 5) / 10)
+let s:l = 2 - ((1 * winheight(0) + 7) / 15)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 2
 normal! 0
+lcd ~/code/prg/rs/sample
 wincmd w
-exe 'vert 1resize ' . ((&columns * 61 + 43) / 87)
-exe '2resize ' . ((&lines * 11 + 11) / 22)
-exe 'vert 2resize ' . ((&columns * 25 + 43) / 87)
-exe '3resize ' . ((&lines * 10 + 11) / 22)
-exe 'vert 3resize ' . ((&columns * 25 + 43) / 87)
+wincmd =
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

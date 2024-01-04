@@ -66,66 +66,6 @@ return { --Tip - check the default bindings before setting them unneccesarily
     },
   },
   opts = {
-
-    defaults = {
-      mappings = {
-        i = {
-          ["<C-n>"] = function(...)
-            return require("telescope.actions").cycle_history_next(...)
-          end,
-          ["<C-p>"] = function(...)
-            return require("telescope.actions").cycle_history_prev(...)
-          end,
-          ["<C-j>"] = function(...)
-            return require("telescope.actions").move_selection_next(...)
-          end, --doesn't seem to work with both ctrl and alt for some reason but are working for fzf
-          ["<C-k>"] = function(...)
-            return require("telescope.actions").move_selection_previous(...)
-          end,
-          ["<C-f>"] = function(...)
-            return require("telescope.actions").preview_scrolling_right(...)
-          end,
-          ["<C-b>"] = function(...)
-            return require("telescope.actions").preview_scrolling_left(...)
-          end,
-          ["<C-g>"] = function(...)
-            return require("telescope.actions").results_scrolling_right(...)
-          end,
-          ["<C-a>"] = function(...)
-            return require("telescope.actions").results_scrolling_left(...)
-          end,
-          ["<C-l>"] = function(...)
-            return require("telescope.actions").complete_tag(...)
-          end,
-          ["<C-_>"] = function(...)
-            return require("telescope.actions").which_key(...)
-          end, -- keys from pressing <C-/>
-          -- ["<a-h>"] = "which_key",
-          ["<a-d>"] = function(...)
-            return require("telescope.actions").delete_buffer(...)
-          end,
-        },
-        n = {
-          ["<C-f>"] = function(...)
-            return require("telescope.actions").preview_scrolling_right(...)
-          end,
-          ["<C-b>"] = function(...) --seems like this is used somewhere else but dont know where
-            return require("telescope.actions").preview_scrolling_left(...)
-          end,
-          ["<C-g>"] = function(...) --seems like this is used somewhere else but dont know where
-            return require("telescope.actions").results_scrolling_right(...)
-          end,
-          ["<C-a>"] = function(...)
-            return require("telescope.actions").results_scrolling_left(...)
-          end,
-          ["<a-d>"] = function(...)
-            require("telescope.actions").delete_buffer(...)
-          end,
-          --   --[[ ['<a-d>'] = require("telescope").mybuffer(), ]]
-        },
-      },
-    },
-
     extensions = {
       persisted = {
         layout_config = { width = 0.55, height = 0.55 },
@@ -148,4 +88,33 @@ return { --Tip - check the default bindings before setting them unneccesarily
 
     -- require("telescope").load_extension("persisted"),
   },
+  config = function(_, opts)
+    local actions = require("telescope.actions")
+    -- this is much better way of configuring mappings
+    opts.defaults.mappings.i = { 
+      ["<C-j>"] = actions.move_selection_next,
+      ["<C-k>"] = actions.move_selection_previous,
+      ["<C-n>"] = actions.cycle_history_next,
+      ["<C-p>"] = actions.cycle_history_prev,
+      ["<C-f>"] = actions.preview_scrolling_right,
+      ["<C-b>"] = actions.preview_scrolling_left,
+      ["<M-j>"] = actions.results_scrolling_left,
+      ["<M-k>"] = actions.results_scrolling_right,
+      ["<C-a>"] = actions.send_to_qflist + actions.open_qflist,
+      ["<C-g>"] = actions.send_selected_to_qflist + actions.open_qflist,
+      ["<C-q>"] = false,
+      ["<M-q>"] = false,
+    }
+    opts.defaults.mappings.n = {
+      ["<C-f>"] = actions.preview_scrolling_left,
+      ["<C-b>"] = actions.preview_scrolling_right,
+      ["<M-j>"] = actions.results_scrolling_left,
+      ["<M-k>"] = actions.results_scrolling_right,
+      ["<C-a>"] = actions.send_to_qflist + actions.open_qflist,
+      ["<C-g>"] = actions.send_selected_to_qflist + actions.open_qflist,
+      ["<C-q>"] = false,
+      ["<M-q>"] = false,
+    }
+    require("telescope").setup(opts)
+  end,
 }

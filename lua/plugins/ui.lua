@@ -1,10 +1,23 @@
-local logo = [[]]
-logo = string.rep("\n", 8) .. logo .. "\n\n"
 return {
 
   {
+    "rcarriga/nvim-notify",
+    keys = {
+      {
+        "<A-q>",
+        function()
+          require("notify").dismiss({ silent = true, pending = true })
+        end,
+        mode = {"n","i"},
+        desc = "Dismiss all Notifications",
+      },
+    },
+  },
+  {
     "folke/flash.nvim",
     opts = {
+      -- labels = "asdfghjklqwertyuiopzxcvbnm", --default
+      labels = "asdfghjkl;uionwertmpqyzxcvb", --customized
       modes = {
         -- char = {
         --   jump_labels = true,
@@ -73,19 +86,31 @@ return {
 
   {
     "nvimdev/dashboard-nvim",
+    -- event = 'VimEnter',
     opts = {
       hide = {
         statusline = false, -- hide statusline default is true
-        -- tabline =true,     -- hide the tabline
         winbar = true, -- hide winbar -- not working
       },
-      config = {
-        header = vim.split(logo, "\n"),
-        -- center = { -- this results in overriding the defaults
-        -- { action = 'lua require("persisted").load()', desc = "Restore persisted Session", icon = " ", key = "a" },
-        -- },
-      },
     },
+    config = function(_, opts) -- passing opts as a table
+      local logo = [[]]
+      logo = string.rep("\n", 2) .. logo .. "\n\n"
+      opts.config.header = vim.split(logo, "\n")
+      if type(opts.config.center) == "table" then
+        vim.list_extend(
+          opts.config.center,
+          {
+            { action = 'lua require("persisted").load()', desc = " Restore persisted Session", icon = " ", key = "d" },
+          }
+        )
+      end
+      for _, button in ipairs(opts.config.center) do -- for removing square brackets from around key (copied from lazyvim repo)
+        -- button.desc = button.desc .. string.rep(" ", 43 - #button.desc)
+        button.key_format = "  %s"
+      end
+      require("dashboard").setup(opts) -- without this undefined behavour without errors
+    end,
   },
 
   {
@@ -142,8 +167,8 @@ return {
         desc = "hardtime toggle",
       },
     },
-    cmd = {"Hardtime"},
-    event = {"BufEnter"},
+    cmd = { "Hardtime" },
+    event = { "BufEnter" },
     opts = {},
   },
   -- {
