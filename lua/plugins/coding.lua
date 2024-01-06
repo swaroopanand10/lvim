@@ -77,13 +77,24 @@ return {
     opts = {
       inlay_hints = { enabled = true },
       -- servers = {
-        -- tsserver = {},
-        -- clangd = {},
+      -- tsserver = {},
+      -- clangd = {},
       --   html = {},
       --   cssls = {},
       --   emmet_ls = {},
       --   bashls = {},
       -- },
+    },
+  },
+  {
+    "sindrets/diffview.nvim",
+    cmd = "DiffviewOpen",
+  },
+  {
+    "rmagatti/goto-preview",
+    event = "BufEnter",
+    opts = {
+      default_mappings = true,
     },
   },
 }

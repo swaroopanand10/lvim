@@ -8,7 +8,7 @@ return {
         function()
           require("notify").dismiss({ silent = true, pending = true })
         end,
-        mode = {"n","i"},
+        mode = { "n", "i" },
         desc = "Dismiss all Notifications",
       },
     },
@@ -58,18 +58,6 @@ return {
       },
     },
   },
-  -- {
-  --   "pocco81/true-zen.nvim",
-  --   keys = {
-  --     {
-  --       "<leader>jZ",
-  --       "<cmd>:TZMinimalist<cr>",
-  --       silent = true,
-  --       desc = "true zen minimalist",
-  --     },
-  --   }
-  -- },
-
   {
     "folke/which-key.nvim",
     optional = true,
@@ -98,12 +86,9 @@ return {
       logo = string.rep("\n", 2) .. logo .. "\n\n"
       opts.config.header = vim.split(logo, "\n")
       if type(opts.config.center) == "table" then
-        vim.list_extend(
-          opts.config.center,
-          {
-            { action = 'lua require("persisted").load()', desc = " Restore persisted Session", icon = " ", key = "d" },
-          }
-        )
+        vim.list_extend(opts.config.center, {
+          { action = 'lua require("persisted").load()', desc = " Restore persisted Session", icon = " ", key = "d" },
+        })
       end
       for _, button in ipairs(opts.config.center) do -- for removing square brackets from around key (copied from lazyvim repo)
         -- button.desc = button.desc .. string.rep(" ", 43 - #button.desc)
@@ -170,6 +155,53 @@ return {
     cmd = { "Hardtime" },
     event = { "BufEnter" },
     opts = {},
+  },
+  {
+    "uga-rosa/ccc.nvim",
+    cmd = "CccPick",
+    keys = {
+      {
+        "<leader>jc",
+        "<cmd>CccPick<cr>",
+        silent = true,
+        desc = "Ccc Pick",
+      },
+      {
+        "<leader>jC",
+        "<cmd>CccHighlighterToggle<cr>",
+        silent = true,
+        desc = "Ccc highlight toggle",
+      },
+    },
+  },
+  {
+    "smoka7/multicursors.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "smoka7/hydra.nvim",
+    },
+    cmd = { "MCstart", "MCvisual", "MCclear", "MCpattern", "MCvisualPattern", "MCunderCursor" },
+    opts = {},
+    keys = {
+      {
+        mode = { "v", "n" },
+        "<Leader>jms",
+        "<cmd>MCstart<cr>",
+        desc = "Create a selection for selected text or word under the cursor",
+      },
+      {
+        mode = { "v", "n" },
+        "<Leader>jma",
+        "<cmd>MCpattern<cr>",
+        desc = "Create a selection for selected text or word under the cursor",
+      },
+      {
+        mode = { "v", "n" },
+        "<Leader>jmx",
+        "<cmd>MCclear<cr>",
+        desc = "Create a selection for selected text or word under the cursor",
+      },
+    },
   },
   -- {
   --   "ten3roberts/window-picker.nvim",
