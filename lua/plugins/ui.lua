@@ -187,13 +187,13 @@ return {
     cmd = "CccPick",
     keys = {
       {
-        "<leader>jc",
+        "<leader>jC",
         "<cmd>CccPick<cr>",
         silent = true,
         desc = "Ccc Pick",
       },
       {
-        "<leader>jC",
+        "<leader>jc",
         "<cmd>CccHighlighterToggle<cr>",
         silent = true,
         desc = "Ccc highlight toggle",
