@@ -17,7 +17,19 @@ return {
     "folke/flash.nvim",
     keys = {
       {
-        "<leader>jk",
+        "kl",
+        mode = { "n", "x", "o" },
+        function()
+          require("flash").jump({
+            search = { mode = "search", max_length = 0 },
+            label = { after = { 0, 0 } },
+            pattern = "^",
+          })
+        end,
+        desc = "Label beginning of line",
+      },
+      {
+        "lk",
         mode = { "n", "x", "o" },
         function()
           require("flash").jump({

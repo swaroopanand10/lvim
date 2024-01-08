@@ -12,3 +12,7 @@ vim.opt.guicursor = "n-v-c:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor
 --disabling line numbers
 vim.o.number = false
 vim.o.relativenumber = false
+vim.o.timeoutlen=60
+-- vim.o.ttimeoutlen=10
+-- vim.o.updatetime=300
+
