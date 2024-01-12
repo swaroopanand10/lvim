@@ -40,6 +40,18 @@ return {
         end,
         desc = "Label beginning of line",
       },
+      {
+        "<A-f>",
+        mode = { "n", "x", "o" },
+        function()
+          require("flash").jump({
+            search = { mode = "search", max_length = 0 },
+            label = { after = { 0, 0 } },
+            pattern = "^",
+          })
+        end,
+        desc = "Label beginning of line",
+      },
     },
     opts = {
       -- labels = "asdfghjklqwertyuiopzxcvbnm", --default
