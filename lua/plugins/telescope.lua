@@ -91,7 +91,7 @@ return { --Tip - check the default bindings before setting them unneccesarily
   config = function(_, opts)
     local actions = require("telescope.actions")
     -- this is much better way of configuring mappings
-    opts.defaults.mappings.i = { 
+    opts.defaults.mappings.i = {
       ["<C-j>"] = actions.move_selection_next,
       ["<C-k>"] = actions.move_selection_previous,
       ["<C-n>"] = actions.cycle_history_next,
