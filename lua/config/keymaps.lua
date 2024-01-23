@@ -138,23 +138,23 @@ map("n", "<leader>jx", function()
   end
 end, { desc = "toggle statusbar", silent = true })
 
--- Keymap for toggling both statusbar and winbar
-map("n", "<C-i>", function()
-  if vim.o.laststatus == 3 then
-    vim.o.laststatus = 0
-    require("lualine").hide({ unhide = false })
-    vim.o.winbar = nil
-    vim.api.nvim_set_hl(0, "Statusline", { fg = "#1b1d2b", bg = "#000000" })
-    vim.api.nvim_set_hl(0, "StatuslineNC", { bold = true, fg = "#1b1d2b", bg = "#000000" })
-    vim.cmd([[set statusline=%{repeat('─',winwidth('.'))}]])
-  else
-    vim.o.winbar = " %t %m"
-    require("lualine").hide({ unhide = true })
-    vim.o.laststatus = 3
-    vim.api.nvim_set_hl(0, "Statusline", {})
-    vim.api.nvim_set_hl(0, "StatuslineNC", { fg = "#3b4261" })
-  end
-end, { desc = "toggle statusbar", silent = true })
+-- -- Keymap for toggling both statusbar and winbar (removing this since ctrl-i is used in navigation)
+-- map("n", "<C-i>", function()
+--   if vim.o.laststatus == 3 then
+--     vim.o.laststatus = 0
+--     require("lualine").hide({ unhide = false })
+--     vim.o.winbar = nil
+--     vim.api.nvim_set_hl(0, "Statusline", { fg = "#1b1d2b", bg = "#000000" })
+--     vim.api.nvim_set_hl(0, "StatuslineNC", { bold = true, fg = "#1b1d2b", bg = "#000000" })
+--     vim.cmd([[set statusline=%{repeat('─',winwidth('.'))}]])
+--   else
+--     vim.o.winbar = " %t %m"
+--     require("lualine").hide({ unhide = true })
+--     vim.o.laststatus = 3
+--     vim.api.nvim_set_hl(0, "Statusline", {})
+--     vim.api.nvim_set_hl(0, "StatuslineNC", { fg = "#3b4261" })
+--   end
+-- end, { desc = "toggle statusbar", silent = true })
 
 --mapping for toggling line numbers for all open windows
 map("n", "<leader>ja", function()
