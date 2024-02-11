@@ -95,6 +95,12 @@ return {
     event = "BufEnter",
     opts = {
       default_mappings = true,
+      post_open_hook = function()
+        vim.api.nvim_command("set nomodifiable")
+      end,
+      post_close_hook = function()
+        vim.api.nvim_command('set modifiable')
+      end,
     },
   },
 }
