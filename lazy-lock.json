@@ -69,6 +69,7 @@
   "persistence.nvim": { "branch": "main", "commit": "4982499c1636eac254b72923ab826ee7827b3084" },
   "plenary.nvim": { "branch": "master", "commit": "663246936325062427597964d81d30eaa42ab1e4" },
   "qalc.nvim": { "branch": "main", "commit": "d3072e5ac8dc1caa4b60f673c53f70c7e06f1367" },
+  "quarto-nvim": { "branch": "main", "commit": "e70a207ede642ccb910540ee36480dcefb67ad6c" },
   "rose-pine": { "branch": "main", "commit": "2a4aad89a803c84d7d1555d136639cd48ade1d64" },
   "rust-tools.nvim": { "branch": "master", "commit": "676187908a1ce35ffcd727c654ed68d851299d3e" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "6c921ca12321edaa773e324ef64ea301a1d0da62" },
