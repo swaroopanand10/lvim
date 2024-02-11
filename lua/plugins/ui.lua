@@ -107,6 +107,7 @@ return {
         ["<leader>jn"] = { name = "+compitest" },
         ["<leader>jm"] = { name = "+multicursors" },
         ["<leader>h"] = { name = "+harpoon" },
+        ["<leader>i"] = { name = "+neorg" },
       },
     },
   },

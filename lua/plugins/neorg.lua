@@ -74,18 +74,24 @@ return {
       silent = true,
       desc = "Neorg journal menu",
     },
-    -- {
-    --   "<leader>jne",
-    --   "<cmd>Telescope Neorg insert_link<cr>",
-    --   silent = true,
-    --   desc = "insert link",
-    -- },
-    -- {
-    --   "<leader>jna",
-    --   "<cmd>Telescope Neorg insert_file_link<cr>",
-    --   silent = true,
-    --   desc = "insert file link",
-    -- },
+    {
+      "<leader>ik",
+      "<cmd>:Neorg keybind all<cr>",
+      silent = true,
+      desc = "Neorg keybind all",
+    },
+    {
+      "<leader>ie",
+      "<cmd>:Neorg keybind all core.integrations.telescope.insert_link<cr>",
+      silent = true,
+      desc = "insert link",
+    },
+    {
+      "<leader>ia",
+      "<cmd>:Neorg keybind all core.integrations.telescope.insert_file_link<cr>",
+      silent = true,
+      desc = "insert file link",
+    },
   },
   ft = "norg", -- lazy load on filetype
   -- cmd = "Neorg", -- lazy load on command, allows you to autocomplete :Neorg regardless of whether it's loaded yet
@@ -104,6 +110,9 @@ return {
             cppprg = "~/notes/cppprg",
             networking = "~/notes/networking",
             comparch = "~/notes/comparch",
+            rs = "~/notes/rs",
+            asm = "~/notes/asm",
+            os = "~/notes/os",
           },
           default_workspace = "notes",
         },
@@ -116,30 +125,31 @@ return {
       },
       ["core.export"] = {},
       ["core.summary"] = {},
+      -- ["core.ui.calendar"] = {},
     },
   },
-  config = function(_, opts)
-    -- mappings for neorg
-    local neorg_callbacks = require("neorg.core.callbacks")
-
-    neorg_callbacks.on_event("core.keybinds.events.enable_keybinds", function(_, keybinds)
-      -- Map all the below keybinds only when the "norg" mode is active
-      keybinds.map_event_to_mode("norg", {
-        n = { -- Bind keys in normal mode
-          { "<leader>ia", "core.integrations.telescope.insert_file_link" },
-          { "<leader>ie", "core.integrations.telescope.insert_link" },
-        },
-
-        i = { -- Bind in insert mode
-          -- { "<C-.>", "core.integrations.telescope.insert_link" },
-          -- { "<C-,>", "core.integrations.telescope.insert_file_link" },
-        },
-      }, {
-        desc = "insert link",
-        silent = true,
-        noremap = true,
-      })
-    end)
-    require("neorg").setup(opts)
-  end,
+  -- config = function(_, opts)
+  --   -- mappings for neorg
+  --   local neorg_callbacks = require("neorg.core.callbacks")
+  --
+  --   neorg_callbacks.on_event("core.keybinds.events.enable_keybinds", function(_, keybinds)
+  --     -- Map all the below keybinds only when the "norg" mode is active
+  --     keybinds.map_event_to_mode("norg", {
+  --       n = { -- Bind keys in normal mode
+  --         { "<leader>ia", "core.integrations.telescope.insert_file_link" },
+  --         { "<leader>ie", "core.integrations.telescope.insert_link" },
+  --       },
+  --
+  --       i = { -- Bind in insert mode
+  --         -- { "<C-.>", "core.integrations.telescope.insert_link" },
+  --         -- { "<C-,>", "core.integrations.telescope.insert_file_link" },
+  --       },
+  --     }, {
+  --       desc = "insert link",
+  --       silent = true,
+  --       noremap = true,
+  --     })
+  --   end)
+  --   require("neorg").setup(opts)
+  -- end,
 }
