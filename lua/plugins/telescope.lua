@@ -44,7 +44,7 @@ return { --Tip - check the default bindings before setting them unneccesarily
       desc = "undo history",
     },
     {
-      "<leader>j,",
+      "<leader>jk",
       -- "<cmd>Telescope undo<cr>",
       function()
         require("telescope.builtin").find_files({ cwd = require("telescope.utils").buffer_dir() })
