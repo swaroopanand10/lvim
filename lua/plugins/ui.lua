@@ -40,18 +40,6 @@ return {
         end,
         desc = "Label beginning of line",
       },
-      {
-        "<A-f>",
-        mode = { "n", "x", "o" },
-        function()
-          require("flash").jump({
-            search = { mode = "search", max_length = 0 },
-            label = { after = { 0, 0 } },
-            pattern = "^",
-          })
-        end,
-        desc = "Label beginning of line",
-      },
     },
     opts = {
       -- labels = "asdfghjklqwertyuiopzxcvbnm", --default
@@ -181,21 +169,21 @@ return {
       require("kitty-scrollback").setup()
     end,
   },
-  {
-    "m4xshen/hardtime.nvim",
-    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-    keys = {
-      {
-        "<leader>jj",
-        "<cmd>Hardtime toggle<cr>",
-        silent = true,
-        desc = "hardtime toggle",
-      },
-    },
-    cmd = { "Hardtime" },
-    event = { "BufEnter" },
-    opts = {},
-  },
+  -- { -- disabled because it was causing some problems with neorg keybindings
+  --   "m4xshen/hardtime.nvim",
+  --   dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+  --   keys = {
+  --     {
+  --       "<leader>jj",
+  --       "<cmd>Hardtime toggle<cr>",
+  --       silent = true,
+  --       desc = "hardtime toggle",
+  --     },
+  --   },
+  --   cmd = { "Hardtime" },
+  --   event = { "BufEnter" },
+  --   opts = {},
+  -- },
   {
     "uga-rosa/ccc.nvim",
     cmd = "CccPick",
@@ -214,56 +202,56 @@ return {
       },
     },
   },
-  {
-    "smoka7/multicursors.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      "smoka7/hydra.nvim",
-    },
-    cmd = { "MCstart", "MCvisual", "MCclear", "MCpattern", "MCvisualPattern", "MCunderCursor" },
-    opts = {},
-    keys = {
-      {
-        mode = { "v", "n" },
-        "<Leader>jms",
-        "<cmd>MCstart<cr>",
-        desc = "Create a selection for selected text or word under the cursor",
-      },
-      {
-        mode = { "v", "n" },
-        "<Leader>jma",
-        "<cmd>MCpattern<cr>",
-        desc = "Create a selection for selected text or word under the cursor",
-      },
-      {
-        mode = { "v", "n" },
-        "<Leader>jmx",
-        "<cmd>MCclear<cr>",
-        desc = "Create a selection for selected text or word under the cursor",
-      },
-    },
-  },
-  -- {
-  --   "ten3roberts/window-picker.nvim",
-  --   keys = {
-  --     {
-  --       "<leader>jww",
-  --       "<cmd>:WindowPick<cr>",
-  --       silent = true,
-  --       desc = "window pick",
-  --     },
-  --     {
-  --       "<leader>jws",
-  --       "<cmd>:WindowSwap<cr>",
-  --       silent = true,
-  --       desc = "widnow swap",
-  --     },
-  --     {
-  --       "<leader>jwd",
-  --       "<cmd>:WindowZap<cr>",
-  --       silent = true,
-  --       desc = "window zap",
-  --     },
-  --   },
-  -- },
+--   {
+--     "smoka7/multicursors.nvim",
+--     event = "VeryLazy",
+--     dependencies = {
+--       "smoka7/hydra.nvim",
+--     },
+--     cmd = { "MCstart", "MCvisual", "MCclear", "MCpattern", "MCvisualPattern", "MCunderCursor" },
+--     opts = {},
+--     keys = {
+--       {
+--         mode = { "v", "n" },
+--         "<Leader>jms",
+--         "<cmd>MCstart<cr>",
+--         desc = "Create a selection for selected text or word under the cursor",
+--       },
+--       {
+--         mode = { "v", "n" },
+--         "<Leader>jma",
+--         "<cmd>MCpattern<cr>",
+--         desc = "Create a selection for selected text or word under the cursor",
+--       },
+--       {
+--         mode = { "v", "n" },
+--         "<Leader>jmx",
+--         "<cmd>MCclear<cr>",
+--         desc = "Create a selection for selected text or word under the cursor",
+--       },
+--     },
+--   },
+--   -- {
+--   --   "ten3roberts/window-picker.nvim",
+--   --   keys = {
+--   --     {
+--   --       "<leader>jww",
+--   --       "<cmd>:WindowPick<cr>",
+--   --       silent = true,
+--   --       desc = "window pick",
+--   --     },
+--   --     {
+--   --       "<leader>jws",
+--   --       "<cmd>:WindowSwap<cr>",
+--   --       silent = true,
+--   --       desc = "widnow swap",
+--   --     },
+--   --     {
+--   --       "<leader>jwd",
+--   --       "<cmd>:WindowZap<cr>",
+--   --       silent = true,
+--   --       desc = "window zap",
+--   --     },
+--   --   },
+--   -- },
 }

@@ -113,6 +113,8 @@ return {
             rs = "~/notes/rs",
             asm = "~/notes/asm",
             os = "~/notes/os",
+            wayland = "~/notes/wayland",
+            gtk = "~/notes/gtk",
           },
           default_workspace = "notes",
         },
