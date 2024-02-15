@@ -115,6 +115,7 @@ return {
             os = "~/notes/os",
             wayland = "~/notes/wayland",
             gtk = "~/notes/gtk",
+            unix = "~/notes/unix"
           },
           default_workspace = "notes",
         },

@@ -104,6 +104,7 @@ return { --Tip - check the default bindings before setting them unneccesarily
       ["<C-g>"] = actions.send_selected_to_qflist + actions.open_qflist,
       ["<C-q>"] = false,
       ["<M-q>"] = false,
+      ["<A-d>"] = actions.delete_buffer,
     }
     opts.defaults.mappings.n = {
       ["<C-f>"] = actions.preview_scrolling_left,
@@ -114,6 +115,7 @@ return { --Tip - check the default bindings before setting them unneccesarily
       ["<C-g>"] = actions.send_selected_to_qflist + actions.open_qflist,
       ["<C-q>"] = false,
       ["<M-q>"] = false,
+      ["<A-d>"] = actions.delete_buffer,
     }
     require("telescope").setup(opts)
   end,
