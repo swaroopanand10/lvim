@@ -202,56 +202,71 @@ return {
       },
     },
   },
---   {
---     "smoka7/multicursors.nvim",
---     event = "VeryLazy",
---     dependencies = {
---       "smoka7/hydra.nvim",
---     },
---     cmd = { "MCstart", "MCvisual", "MCclear", "MCpattern", "MCvisualPattern", "MCunderCursor" },
---     opts = {},
---     keys = {
---       {
---         mode = { "v", "n" },
---         "<Leader>jms",
---         "<cmd>MCstart<cr>",
---         desc = "Create a selection for selected text or word under the cursor",
---       },
---       {
---         mode = { "v", "n" },
---         "<Leader>jma",
---         "<cmd>MCpattern<cr>",
---         desc = "Create a selection for selected text or word under the cursor",
---       },
---       {
---         mode = { "v", "n" },
---         "<Leader>jmx",
---         "<cmd>MCclear<cr>",
---         desc = "Create a selection for selected text or word under the cursor",
---       },
---     },
---   },
---   -- {
---   --   "ten3roberts/window-picker.nvim",
---   --   keys = {
---   --     {
---   --       "<leader>jww",
---   --       "<cmd>:WindowPick<cr>",
---   --       silent = true,
---   --       desc = "window pick",
---   --     },
---   --     {
---   --       "<leader>jws",
---   --       "<cmd>:WindowSwap<cr>",
---   --       silent = true,
---   --       desc = "widnow swap",
---   --     },
---   --     {
---   --       "<leader>jwd",
---   --       "<cmd>:WindowZap<cr>",
---   --       silent = true,
---   --       desc = "window zap",
---   --     },
---   --   },
---   -- },
+  {
+    "benlubas/wrapping-paper.nvim",
+  },
+  {
+    "echasnovski/mini.files",
+    opts = {
+      mappings = {
+        go_in = "L",
+        go_in_plus = "<cr>",
+        go_out = "H",
+        go_out_plus = "K",
+        -- synchronize = "<cr>",
+      },
+    },
+  },
+  --   {
+  --     "smoka7/multicursors.nvim",
+  --     event = "VeryLazy",
+  --     dependencies = {
+  --       "smoka7/hydra.nvim",
+  --     },
+  --     cmd = { "MCstart", "MCvisual", "MCclear", "MCpattern", "MCvisualPattern", "MCunderCursor" },
+  --     opts = {},
+  --     keys = {
+  --       {
+  --         mode = { "v", "n" },
+  --         "<Leader>jms",
+  --         "<cmd>MCstart<cr>",
+  --         desc = "Create a selection for selected text or word under the cursor",
+  --       },
+  --       {
+  --         mode = { "v", "n" },
+  --         "<Leader>jma",
+  --         "<cmd>MCpattern<cr>",
+  --         desc = "Create a selection for selected text or word under the cursor",
+  --       },
+  --       {
+  --         mode = { "v", "n" },
+  --         "<Leader>jmx",
+  --         "<cmd>MCclear<cr>",
+  --         desc = "Create a selection for selected text or word under the cursor",
+  --       },
+  --     },
+  --   },
+  --   -- {
+  --   --   "ten3roberts/window-picker.nvim",
+  --   --   keys = {
+  --   --     {
+  --   --       "<leader>jww",
+  --   --       "<cmd>:WindowPick<cr>",
+  --   --       silent = true,
+  --   --       desc = "window pick",
+  --   --     },
+  --   --     {
+  --   --       "<leader>jws",
+  --   --       "<cmd>:WindowSwap<cr>",
+  --   --       silent = true,
+  --   --       desc = "widnow swap",
+  --   --     },
+  --   --     {
+  --   --       "<leader>jwd",
+  --   --       "<cmd>:WindowZap<cr>",
+  --   --       silent = true,
+  --   --       desc = "window zap",
+  --   --     },
+  --   --   },
+  --   -- },
 }

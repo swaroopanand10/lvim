@@ -16,3 +16,6 @@ vim.o.timeoutlen=60
 -- vim.o.ttimeoutlen=10
 -- vim.o.updatetime=300
 
+vim.opt.breakindent = true
+vim.opt.breakindentopt = 'shift:1,min:0'
+vim.opt.showbreak = '>'
