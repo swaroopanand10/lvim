@@ -204,6 +204,15 @@ return {
   },
   {
     "benlubas/wrapping-paper.nvim",
+    keys = {
+      {
+        mode = { "n" },
+        "gw",
+        "<cmd>lua require('wrapping-paper').wrap_line()<cr>",
+        silent = true,
+        desc = "fake wrap current line",
+      },
+    },
   },
   {
     "echasnovski/mini.files",
