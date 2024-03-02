@@ -54,22 +54,22 @@ return {
       -- appr -> 3 = dual and 2 = approximate
     },
   },
-  {
-    "luckasRanarison/nvim-devdocs",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    },
-    cmd = "DevdocsOpenCurrent",
-    opts = {
-      -- previewer_cmd = "glow", -- for example: "glow"
-      -- cmd_args = { "-s", "dark", "-w", "80" },
-      -- picker_cmd = true,
-      -- picker_cmd_args = { "-p" },
-      ensure_installed = { "rust", "c", "cpp", "javascript" },
-    },
-  },
+  -- {
+  --   "luckasRanarison/nvim-devdocs",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-telescope/telescope.nvim",
+  --     "nvim-treesitter/nvim-treesitter",
+  --   },
+  --   cmd = "DevdocsOpenCurrent",
+  --   opts = {
+  --     -- previewer_cmd = "glow", -- for example: "glow"
+  --     -- cmd_args = { "-s", "dark", "-w", "80" },
+  --     -- picker_cmd = true,
+  --     -- picker_cmd_args = { "-p" },
+  --     ensure_installed = { "rust", "c", "cpp", "javascript" },
+  --   },
+  -- },
   {
     -- I think that we can configure lspconfig servers like this normally without overidding the lazyvim default setted options but,
     -- I don't think we need to configure empty servers as they are pre-configured with defaults when they are installed(so just put them in mason)
@@ -103,4 +103,46 @@ return {
       -- end,
     },
   },
+  -- {
+  --   "gregorias/coerce.nvim",
+  --   event = { "VeryLazy" },
+  --   opts = {
+  --     modes = {
+  --       {
+  --         vim_mode = "n",
+  --         keymap_prefix = ",",
+  --         selector = function()
+  --           return require("coerce.selector").select_current_word()
+  --         end,
+  --         transformer = function(selected_region, apply)
+  --           return require("coerce.transformer").transform_lsp_rename_with_failover(
+  --             selected_region,
+  --             apply,
+  --             require("coerce.transformer").transform_local
+  --           )
+  --         end,
+  --       },
+  --       {
+  --         vim_mode = "n",
+  --         keymap_prefix = ",,",
+  --         selector = function()
+  --           return require("coerce.selector").select_with_motion()
+  --         end,
+  --         transformer = function(selected_region, apply)
+  --           return require("coerce.transformer").transform_local(selected_region, apply)
+  --         end,
+  --       },
+  --       {
+  --         vim_mode = "v",
+  --         keymap_prefix = ",",
+  --         selector = function()
+  --           return require("coerce.selector").select_current_visual_selection()
+  --         end,
+  --         transformer = function(selected_region, apply)
+  --           return require("coerce.transformer").transform_local(selected_region, apply)
+  --         end,
+  --       },
+  --     },
+  --   },
+  -- },
 }

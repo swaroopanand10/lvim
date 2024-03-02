@@ -45,7 +45,6 @@ return { --Tip - check the default bindings before setting them unneccesarily
     },
     {
       "<leader>jk",
-      -- "<cmd>Telescope undo<cr>",
       function()
         require("telescope.builtin").find_files({ cwd = require("telescope.utils").buffer_dir() })
       end,
@@ -116,6 +115,7 @@ return { --Tip - check the default bindings before setting them unneccesarily
       ["<C-q>"] = false,
       ["<M-q>"] = false,
       ["<A-d>"] = actions.delete_buffer,
+      ["q"] = actions.close,
     }
     require("telescope").setup(opts)
   end,

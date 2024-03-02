@@ -45,9 +45,10 @@ return {
       -- labels = "asdfghjklqwertyuiopzxcvbnm", --default
       labels = "asdfghjkl;uionwertmpqyzxcvb", --customized
       modes = {
-        -- char = {
-        --   jump_labels = true,
-        -- },
+        char = {
+          --   jump_labels = true,
+          keys = { "f", "F", "t", "T" },
+        },
         search = {
           -- enabled = false,
         },
@@ -223,6 +224,20 @@ return {
         go_out = "H",
         go_out_plus = "K",
         -- synchronize = "<cr>",
+      },
+    },
+  },
+  {
+    "echasnovski/mini.surround",
+    opts = {
+      mappings = {
+        add = ";;",
+        delete = ";d",
+        find = ";f",
+        find_left = ";F",
+        highlight = ";h",
+        replace = ";r",
+        update_n_lines = ";n",
       },
     },
   },

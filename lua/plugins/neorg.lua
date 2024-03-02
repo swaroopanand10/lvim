@@ -115,7 +115,9 @@ return {
             os = "~/notes/os",
             wayland = "~/notes/wayland",
             gtk = "~/notes/gtk",
-            unix = "~/notes/unix"
+            unix = "~/notes/unix",
+            js = "~/notes/js",
+            css = "~/notes/css",
           },
           default_workspace = "notes",
         },
@@ -128,31 +130,8 @@ return {
       },
       ["core.export"] = {},
       ["core.summary"] = {},
-      -- ["core.ui.calendar"] = {},
+      ['core.ui'] = {},
+      ["core.ui.calendar"] = {},
     },
   },
-  -- config = function(_, opts)
-  --   -- mappings for neorg
-  --   local neorg_callbacks = require("neorg.core.callbacks")
-  --
-  --   neorg_callbacks.on_event("core.keybinds.events.enable_keybinds", function(_, keybinds)
-  --     -- Map all the below keybinds only when the "norg" mode is active
-  --     keybinds.map_event_to_mode("norg", {
-  --       n = { -- Bind keys in normal mode
-  --         { "<leader>ia", "core.integrations.telescope.insert_file_link" },
-  --         { "<leader>ie", "core.integrations.telescope.insert_link" },
-  --       },
-  --
-  --       i = { -- Bind in insert mode
-  --         -- { "<C-.>", "core.integrations.telescope.insert_link" },
-  --         -- { "<C-,>", "core.integrations.telescope.insert_file_link" },
-  --       },
-  --     }, {
-  --       desc = "insert link",
-  --       silent = true,
-  --       noremap = true,
-  --     })
-  --   end)
-  --   require("neorg").setup(opts)
-  -- end,
 }

@@ -46,12 +46,6 @@ map({"n", "i"}, "<C-S-q>", "<cmd>qa!<cr>", {desc = "quit all without saving"})
 -- mapping for scrolling up and down
 map("n", "<A-r>", "<C-y>", opts)
 map("n", "<A-e>", "<C-e>", opts)
--- map(
---   "n",
---   "gw", -- see :h gw to figure out why this makes sense.
---   require("wrapping-paper").wrap_line,
---   { desc = "fake wrap current line" }
--- )
 
 -- keymaps for manupulating window using nvim_window_picker
 map("n", "<leader>jww", function()
