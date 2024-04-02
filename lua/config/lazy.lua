@@ -52,6 +52,10 @@ require("lazy").setup({
   -- checker = { enabled = true }, -- automatically check for plugin updates
   checker = { enabled = false }, -- do not automatically check for plugin updates
   -- checker = { enabled = true, notify = false }, -- check for updated but do not notify
+  change_detection = { -- trying this out to fix the memory leakage
+    enabled = false,
+    notify = false,
+  },
   performance = {
     rtp = {
       -- disable some rtp plugins
