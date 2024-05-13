@@ -75,7 +75,7 @@ return {
     -- I don't think we need to configure empty servers as they are pre-configured with defaults when they are installed(so just put them in mason)
     "neovim/nvim-lspconfig",
     opts = {
-      inlay_hints = { enabled = true },
+      -- inlay_hints = { enabled = true },
       -- servers = {
       -- tsserver = {},
       -- clangd = {},
